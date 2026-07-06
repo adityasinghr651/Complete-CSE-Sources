@@ -1,2 +1,2 @@
-﻿# DNS Cheatsheet
+﻿# DNS.md
 

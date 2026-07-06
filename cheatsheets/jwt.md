@@ -1,2 +1,2 @@
-﻿# JWT Cheatsheet
+﻿# JWT.md
 

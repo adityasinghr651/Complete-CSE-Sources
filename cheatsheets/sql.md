@@ -1,2 +1,2 @@
-﻿# SQL Cheatsheet
+﻿# SQL.md
 
