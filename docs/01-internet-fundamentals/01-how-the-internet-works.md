@@ -734,5 +734,3 @@ Now I’ll ask you questions. Reply with your answers; I’ll review and correct
 
 ---
 
-## Next Topic
-[02-what-happens-when-you-type-google-com](./02-what-happens-when-you-type-google-com.md)

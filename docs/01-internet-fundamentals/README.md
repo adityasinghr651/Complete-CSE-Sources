@@ -43,6 +43,7 @@ By the end of this phase, you will be able to:
 Work through the chapters below sequentially. Check them off as you complete them!
 
 - [ ] [01 - How the Internet Works](./01-how-the-internet-works.md)
+- [ ] [02 - Client Server Architecture](./02-client-server-architecture.md)
 
 *(Note: Additional topics will be added here as they are developed.)*
 
