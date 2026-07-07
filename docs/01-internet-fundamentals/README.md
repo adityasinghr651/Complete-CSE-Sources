@@ -45,6 +45,7 @@ Work through the chapters below sequentially. Check them off as you complete the
 - [ ] [01 - How the Internet Works](./01-how-the-internet-works.md)
 - [ ] [02 - Client Server Architecture](./02-client-server-architecture.md)
 - [ ] [03 - HTTP Deep Dive & Core Protocols](./03-http-deep-dive.md)
+- [ ] [04 - REST API Fundamentals](./04-rest-api-fundamentals.md)
 
 *(Note: Additional topics will be added here as they are developed.)*
 
