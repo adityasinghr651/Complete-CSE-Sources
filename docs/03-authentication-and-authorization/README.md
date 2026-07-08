@@ -24,8 +24,7 @@ Work through the chapters below sequentially. Check them off as you complete the
 - [ ] [01 - Authentication & Authorization Fundamentals](./01-auth-fundamentals.md)
 - [ ] [02 - Sessions & Cookies](./02-sessions-and-cookies.md)
 - [ ] [03 - JWT (JSON Web Tokens)](./03-jwt.md)
-
-*(Note: Additional topics like OAuth will be added here as they are developed.)*
+- [ ] [04 - OAuth 2.0 (Google/GitHub Login)](./04-oauth.md)
 
 ***
 
