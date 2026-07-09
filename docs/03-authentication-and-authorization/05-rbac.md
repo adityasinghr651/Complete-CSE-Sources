@@ -1,5 +1,5 @@
 # Day 12: Role-Based Access Control (RBAC)
-*(Simple language, step-by-step, from first principles — with Hinglish intuition, diagrams, production examples, and security best practices)*
+*(Simple language, step-by-step, from first principles — with intuition, diagrams, production examples, and security best practices)*
 
 ***
 
@@ -24,10 +24,10 @@ Think of a **company**:
      - Can: everything.
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> - **RBAC** = Tum user ko ek **role** dete ho (e.g., user, admin, moderator).  
-> - Har role ke **permissions** hote hain (kya kar sakta hai, kya nahi).  
-> - Jab request aati hai → pehle user ka role check karte hain: “Is role ko yeh kaam karne ki permission hai ya nahi?”
+> **Simple Analogy:**  
+> - **RBAC** = You assign a **role** to a user (e.g., user, admin, moderator).  
+> - Each role has **permissions** (what they can and cannot do).  
+> - When a request comes in → first check the user's role: "Does this role have permission to do this task or not?"
 
 ***
 
@@ -356,7 +356,7 @@ Build a **RBAC-enabled backend API**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What is RBAC? Why do we use it?  
 2. What are the 3 main entities in RBAC?  

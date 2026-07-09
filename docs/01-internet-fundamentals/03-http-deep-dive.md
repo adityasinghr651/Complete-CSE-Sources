@@ -1,5 +1,5 @@
 # Day 3: HTTP Deep Dive & Core Protocols
-*(Textbook-style, from first principles — with intuition, diagrams, production context, and Hinglish where it helps)*
+*(Textbook-style, from first principles — with intuition, diagrams, and production context)*
 
 ***
 
@@ -43,10 +43,10 @@ An **HTTP Response** has three corresponding parts:
    - The actual payload (HTML, JSON, images, etc.).
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> Request/Status line = “Conversation ka first sentence.”  
-> Headers = “Context ki details.”  
-> Body = “Actual content / payload.”
+> **Simple Analogy:**  
+> Request/Status line = "The first sentence of the conversation."  
+> Headers = "Contextual details."  
+> Body = "Actual content or payload."
 
 ***
 

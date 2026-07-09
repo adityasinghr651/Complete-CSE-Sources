@@ -13,7 +13,7 @@ If you find a typo, a broken link, or a technical inaccuracy, please open an iss
 - If you know how to fix it, feel free to submit a Pull Request.
 
 ### 2. 📝 Improving Documentation
-The core of this project is documentation. If you can explain a concept better, add a production example, or improve the Hinglish intuition sections, we would love your help.
+The core of this project is documentation. If you can explain a concept better, add a production example, or improve the simple analogy sections, we would love your help.
 - Pick a topic that is marked as `> Status: 🚧 Coming Soon` or an existing one that can be improved.
 - Make sure to follow the **Markdown Style Guide** below.
 

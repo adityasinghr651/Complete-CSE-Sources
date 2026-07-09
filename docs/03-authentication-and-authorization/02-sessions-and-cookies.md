@@ -1,5 +1,5 @@
 # Day 9: Sessions & Cookies
-*(Simple language, step-by-step, from first principles — with Hinglish intuition, diagrams, and production examples)*
+*(Simple language, step-by-step, from first principles — with intuition, diagrams, and production examples)*
 
 ***
 
@@ -21,12 +21,12 @@ Think of a **cafe**:
 - **Cookie** = the number tag on your wrist that you show every time.
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> - **Session** = Server ke andar ek record: “Yeh user kaun hai, isne kya kya kiya”.  
-> - **Cookie** = Browser mein ek chhota data jo har request mein automatically server ko bhejta jata hai.
+> **Simple Analogy:**  
+> - **Session** = A record inside the server: "Who is this user, and what have they done?".  
+> - **Cookie** = A small piece of data in the browser that is automatically sent to the server with every request.
 
 HTTP is **stateless**: each request is independent and forgets the previous one.  
-But apps need to remember: *“Yeh user pehle bhi login hua tha, abhi bhi logged in hai.”*  
+But apps need to remember: *"This user logged in earlier, and they are still logged in."*  
 This statefulness is achieved using **sessions + cookies**.
 
 ***
@@ -350,7 +350,7 @@ Build a **session-based blog app**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What is a **session**? Where is it stored (browser or server)?  
 2. What is a **cookie**? Where is it stored?  

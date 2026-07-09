@@ -1,5 +1,5 @@
 # Day 17: Query Optimization (Explain Plans, Slow Queries, Optimization)  
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -21,10 +21,10 @@ Think of a **delivery driver**:
 - Same result (get all data).
 - Less work (faster, less CPU/memory).
 
-> **Hinglish intuition:**  
-> - **Query optimization** = same result kam work mein lao.  
-> - Tezz chalo, kam resource use karo.  
-> - DB ko poora table scan nahi karna padta.
+> **Simple Analogy:**  
+> - **Query optimization** = Get the same result with less work.  
+> - Run faster and use fewer resources.  
+> - The DB doesn't have to scan the entire table.
 
 ---
 

@@ -22,12 +22,12 @@ This is exactly what **professional API design** is about:
 - **Versioning:** change API safely as product grows.
 
 > [!TIP]
-> **Hinglish intuition:**  
-> “API ek public contract hai. Ek baar contract publish kiya, aur 1000 clients use karna start karein, toh koi bhi change = breaking change ho sakta hai.  
-> Toh hum design karte hain jisse:
-> - easy to use ho,
-> - scalable ho,
-> - aur baad mein change bhi kar sakein without panic.”
+> **Simple Analogy:**  
+> "An API is a public contract. Once published and used by 1000 clients, any change can be a breaking change.  
+> So we design it such that it is:
+> - easy to use,
+> - scalable,
+> - and can be changed later without panic."
 
 ***
 

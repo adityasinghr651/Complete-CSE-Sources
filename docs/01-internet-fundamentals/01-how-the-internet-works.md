@@ -1,5 +1,5 @@
 # Day 1: How the Internet Works  
-*(Textbook-style, from first principles — with intuition, diagrams, production context, and Hinglish where it helps)*
+*(Textbook-style, from first principles — with intuition, diagrams, and production context)*
 
 ***
 
@@ -25,11 +25,11 @@ In the internet world:
 - The **letter content** = **HTTP request/response**
 
 > [!TIP]
-> **Hinglish intuition:**  
-> - “Domain name” = a human-friendly naam.  
-> - “IP address” = machine-friendly address.  
-> - DNS = internet ka phonebook.  
-> - TCP/IP = delivery system jo packets ko reliably pahunchata hai.
+> **Simple Analogy:**  
+> - "Domain name" = a human-friendly name.  
+> - "IP address" = machine-friendly address.  
+> - DNS = the internet's phonebook.  
+> - TCP/IP = the delivery system that reliably transports packets.
 
 ***
 
@@ -652,7 +652,7 @@ What HTTP status code do you get? What headers are present?
 
 ### Task 4: Conceptual Write-Up
 
-Write a short explanation (in your own words, Hinglish allowed) answering:
+Write a short explanation (in your own words) answering:
 
 > “What happens when I type `google.com`?”
 
@@ -699,7 +699,7 @@ Create a document (Markdown or PDF) that visually explains the journey of a requ
 3. **Format**:
    - Use clear headings.
    - Use Mermaid diagrams, ASCII diagrams or hand-drawn scans.
-   - Add Hinglish notes where it helps intuition.
+   - Add notes where it helps intuition.
 
 This becomes your **Day 1 reference sheet** for revision before interviews.
 
@@ -711,7 +711,7 @@ Now I’ll ask you questions. Reply with your answers; I’ll review and correct
 
 ### Conceptual Questions
 
-1. In your own words (Hinglish allowed), what is the difference between a **domain name** and an **IP address**? Why do we need both?
+1. In your own words, what is the difference between a **domain name** and an **IP address**? Why do we need both?
 2. Walk me through DNS resolution for `example.com`. Who are the key players? (Root, TLD, Authoritative, Recursive resolver.)
 3. Why does TCP use a **3-way handshake**? What problem does it solve?
 4. What is the main practical difference between **TCP** and **UDP** for a backend engineer building an API?

@@ -22,8 +22,8 @@ Think of an API like a conversation between two engineers on Slack.
   - **Errors handled in one place (globally)** rather than copy–pasting `try/catch` everywhere.
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> “Error toh hoga hi. Sawaal yeh hai: client ko samajh aata hai kya ki kya galat hua, aur tum log/monitor bhi kar paate ho kya? Professional API = predictable, structured errors.”
+> **Simple Analogy:**  
+> "Errors will inevitably happen. The question is: does the client understand what went wrong, and can you log/monitor it effectively? A professional API means predictable, structured errors."
 
 ***
 
@@ -191,8 +191,8 @@ Typical layering:
 - Clean controllers (they just `throw` errors, they don't format responses).
 
 > [!TIP]
-> **Hinglish:**  
-> “Controllers ko business pe focus karne do. Global handler unke throw kiye gaye exceptions ko pakad ke proper error response bana de.”
+> **Simple Analogy:**  
+> "Let controllers focus on business logic. The global handler will catch their thrown exceptions and format a proper error response."
 
 ***
 
@@ -314,7 +314,7 @@ POST /v1/users
 - If JSON is malformed → return 400.
 - If JSON is valid but fields fail validation → return 422.
 
-Describe, in your own words (Hinglish allowed):
+Describe, in your own words:
 1. The **status code** and **error response body** you would return for:
    - (a) Malformed JSON.
    - (b) Valid JSON but `email = "abc"` and `name = ""`.

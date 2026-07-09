@@ -1,5 +1,5 @@
 # Day 10: JWT (JSON Web Tokens)
-*(Detailed, step-by-step, from first principles — with simple language, Hinglish intuition, diagrams, production examples, and security best practices)*
+*(Detailed, step-by-step, from first principles — with simple language, intuition, diagrams, production examples, and security best practices)*
 
 ***
 
@@ -27,11 +27,11 @@ Think of a **concert ticket**:
 - **No need to look up a session in DB/Redis.**
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> - **JWT** = Ek signed ticket jo server tujhe deta hai.  
-> - Ticket pe likha hai: “user 42, role=user, expiry=2026-07-08”.  
-> - Server har request pe signature check karta hai, aur data use karta hai.  
-> - Session DB/Redis mein save nahi karna padta. Fast and stateless!
+> **Simple Analogy:**  
+> - **JWT** = A signed ticket that the server gives you.  
+> - The ticket says: "user 42, role=user, expiry=2026-07-08".  
+> - The server checks the signature on every request and uses the data.  
+> - No need to save a session in a database or Redis. It is fast and stateless!
 
 This is **token-based authentication**.
 
@@ -363,7 +363,7 @@ Build a **JWT-based blog app**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What are the **3 parts** of a JWT? What data resides in each part?  
 2. What should NOT be placed in the JWT payload and why?  

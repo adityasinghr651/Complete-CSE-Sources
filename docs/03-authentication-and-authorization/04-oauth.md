@@ -1,5 +1,5 @@
 # Day 11: OAuth (Google Login, GitHub Login, OAuth Flow)
-*(Simple language, step-by-step, from first principles — with Hinglish intuition, diagrams, production examples, and security best practices)*
+*(Simple language, step-by-step, from first principles — with intuition, diagrams, production examples, and security best practices)*
 
 ***
 
@@ -30,10 +30,10 @@ Think of a **hotel**:
 - TaskMaster trusts Google and creates your account.
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> - **OAuth** = Ek “key card” system jo Google/GitHub ne aapko diya.  
-> - App kehta hai: “Tumhara account Google pe already hai, bas Google mujhe ek token de de ki tum kaun ho.”  
-> - Google app ko token de deta hai, aur app tumhe login karwa leta hai.
+> **Simple Analogy:**  
+> - **OAuth** = A "key card" system given to you by Google/GitHub.  
+> - The app says: "You already have an account on Google, so just let Google give me a token stating who you are."  
+> - Google gives the app the token, and the app logs you in.
 
 ***
 
@@ -351,7 +351,7 @@ Build an **OAuth-enabled blog app**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What is OAuth? Why do we use it instead of password login?  
 2. What are the 4 roles in OAuth?  

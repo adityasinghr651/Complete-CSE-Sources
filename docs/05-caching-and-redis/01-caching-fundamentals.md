@@ -1,5 +1,5 @@
 # Day 19: Caching Fundamentals (MERN Stack Edition)
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -37,7 +37,7 @@ Doing this 10,000 times a second for the *exact same data* (like a viral tweet o
 
 ## SECTION 3 — Intuition
 
-Imagine tumhare ghar mein kitchen hai (Imagine you have a kitchen in your house).
+Imagine you have a kitchen in your house.
 
 * **Your hands and cutting board:** This is the **CPU (Node.js thread)**. It's where the actual work happens.
 * **The kitchen counter:** This is **L1/L2 Cache**. It is very small, but whatever is kept here can be grabbed instantly.

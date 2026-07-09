@@ -1,5 +1,5 @@
 # Day 16: Indexes (B-Tree, Hash Index, Composite Index)  
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -22,10 +22,10 @@ Now add **page numbers + index at the back**:
 - Without index: DB searches all rows (slow).
 - With index: DB jumps directly to relevant rows (fast).
 
-> **Hinglish intuition:**  
-> - **Index** = database ka "catalog" jo tezz search kare.  
-> - "Email = raj@example.com → row 1024" likha ho.  
-> - DB ko poora table scan nahi karna padta.
+> **Simple Analogy:**  
+> - **Index** = A "catalog" for the database to perform fast searches.  
+> - It says: "Email = raj@example.com → row 1024".  
+> - The DB doesn't have to scan the entire table.
 
 ---
 

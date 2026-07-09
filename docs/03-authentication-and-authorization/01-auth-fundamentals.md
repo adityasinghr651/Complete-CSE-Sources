@@ -1,5 +1,5 @@
 # Day 8: Authentication & Authorization Fundamentals
-*(Simple language, step-by-step, from first principles — with Hinglish intuition, diagrams, and production examples)*
+*(Simple language, step-by-step, from first principles — with intuition, diagrams, and production examples)*
 
 ***
 
@@ -21,9 +21,9 @@ Think of your app like a **gated office building**:
    - Access control answers: *“What are you allowed to do?”*
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> - **Authentication** = “Tum kaun ho? Prove karo.”  
-> - **Authorization** = “Tumhe yeh kaam karna chahiye ya nahi? Check karo.”
+> **Simple Analogy:**  
+> - **Authentication** = "Who are you? Prove it."  
+> - **Authorization** = "Should you be doing this? Let's check."
 
 **In web apps:**
 - **Authentication** = Login with a password, OTP, or Google.
@@ -387,7 +387,7 @@ Implement a **basic auth system** (password-based):
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. In your blog app:
    - What is the **identity** of a user?

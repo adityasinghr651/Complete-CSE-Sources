@@ -1,5 +1,5 @@
 # Day 18: Transactions (ACID, Isolation Levels, Deadlocks)  
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -22,10 +22,10 @@ Problem:
 - Either **both succeed** OR **both fail**.
 - No partial state.
 
-> **Hinglish intuition:**  
-> - **Transaction** = kuch queries ko ek group mein lao.  
-> - Group either fully success ho, ya fully fail ho.  
-> - Partial state nahi ho sakti.
+> **Simple Analogy:**  
+> - **Transaction** = Bring a group of queries together into a single unit.  
+> - The entire group must either fully succeed or fully fail.  
+> - There cannot be a partial state.
 
 ---
 

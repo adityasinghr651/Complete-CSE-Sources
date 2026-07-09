@@ -1,5 +1,5 @@
 # Day 4: API Fundamentals & REST Basics
-*(Textbook-style, from first principles — with intuition, diagrams, production context, and Hinglish where it helps)*
+*(Textbook-style, from first principles — with intuition, diagrams, and production context)*
 
 ***
 
@@ -22,9 +22,9 @@ Similarly:
 - The API hides the internal complexity (database schema, internal services, queues, etc.).
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> API ek **messenger + ruleset** hai jo bolta hai:  
-> “Yahan se baat karo, aise baat karo, ye format use karo; andar ka kitchen tum mat dekho.”
+> **Simple Analogy:**  
+> An API is a **messenger + ruleset** that says:  
+> "Talk to me here, talk like this, use this format; don't look at the kitchen inside."
 
 ### Web / HTTP APIs
 

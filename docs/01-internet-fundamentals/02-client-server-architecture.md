@@ -1,5 +1,5 @@
 # Day 2: Client–Server Architecture & Request Flow
-*(Textbook-style, from first principles — with intuition, diagrams, production context, and Hinglish where it helps)*
+*(Textbook-style, from first principles — with intuition, diagrams, and production context)*
 
 ***
 
@@ -21,10 +21,10 @@ Flow:
 5. Waiter serves food to you → frontend updates UI with data.
 
 > [!TIP]
-> **Hinglish intuition:**  
-> Browser bolta hai: “Mujhe yeh data chahiye.”  
-> Server bolta hai: “Thik hai, main DB se le aata hoon, process karke tujhe bhejta hoon.”  
-> Yehi hai **client–server model** in a nutshell.
+> **Simple Analogy:**  
+> The browser says: "I need this data."  
+> The server replies: "Okay, I will fetch it from the database, process it, and send it to you."  
+> That is the **client–server model** in a nutshell.
 
 ***
 
@@ -382,7 +382,7 @@ Goal: think like a **product engineer**: UI flows + backend APIs + DB.
 
 ## ACTIVE LEARNING – YOUR TURN
 
-To lock in Day 2, answer this in your own words (Hinglish allowed):
+To lock in Day 2, answer this in your own words:
 
 > Consider a simple feature: “Show my profile” on a web app.  
 > Describe the **complete request flow** when the user clicks “My Profile” in the navbar.  

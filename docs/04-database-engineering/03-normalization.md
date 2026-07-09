@@ -1,5 +1,5 @@
 # Day 15: Normalization (1NF, 2NF, 3NF)  
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -35,11 +35,11 @@ Now:
 - Updates are easy.
 - No duplicates.
 
-> **Hinglish intuition:**  
-> - **Normalization** = data ko sahi tarah se **organize** karna.  
-> - Duplicate hatao.  
-> - Har fact ek baar store ho.  
-> - Update, insert, delete aasan ho.
+> **Simple Analogy:**  
+> - **Normalization** = Organizing data properly.  
+> - Remove duplicates.  
+> - Store each fact exactly once.  
+> - Make updates, inserts, and deletes easy.
 
 ---
 

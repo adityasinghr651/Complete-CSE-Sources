@@ -1,6 +1,6 @@
 # Day 14: Advanced Database Concepts
 
-*(Detailed explanation + proper definitions, from first principles — with simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed explanation + proper definitions, from first principles — with simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -20,12 +20,12 @@ Think of a **giant library** storing millions of books:
    - You need multiple copies of shelves for safety (**replication**).
    - You need to split huge shelves into parts (**partitioning**).
 
-> **Hinglish intuition:**  
-> - **Normalization** = books ko sahi tarah se organize karna, duplicate hata kar.  
-> - **Indexing** = ek catalog banana jo tezz search kare.  
-> - **Query optimization** = data kaise fetch karo jo tezz aur kam resource use.  
-> - **Replication** = ek hi shelf ki multiple copies rakhna (safety + speed).  
-> - **Partitioning** = ek bahut badi shelf ko chhote hisse mein todna.
+> **Simple Analogy:**  
+> - **Normalization** = Organizing books properly and removing duplicates.  
+> - **Indexing** = Creating a catalog for fast searching.  
+> - **Query optimization** = Fetching data quickly while using fewer resources.  
+> - **Replication** = Keeping multiple copies of the same shelf (for safety and speed).  
+> - **Partitioning** = Breaking a huge shelf into smaller sections.
 
 These are **advanced database concepts** used in production systems.
 
@@ -705,7 +705,7 @@ Build an **optimized e-commerce DB**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What is **normalization**? Why do we need it?
 2. Explain **1NF, 2NF, 3NF** with examples.

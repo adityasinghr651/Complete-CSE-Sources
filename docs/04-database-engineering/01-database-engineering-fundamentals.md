@@ -1,6 +1,6 @@
 # Day 13: Database Engineering Fundamentals
 
-*(Detailed, step-by-step, from first principles — with proper definitions, simple language, Hinglish intuition, diagrams, and production examples)*
+*(Detailed, step-by-step, from first principles — with proper definitions, simple language, intuition, diagrams, and production examples)*
 
 ---
 
@@ -18,12 +18,12 @@ A **database** is similar:
 - You build the **database system** (create tables, indexes, constraints).
 - You **maintain** it (performance tuning, backups, scaling, security).
 
-> **Hinglish intuition:**  
-> - **Database engineering** = data ko sahi tarike se store, organize, aur retrieve karne ka pura system banana aur maintain karna.  
-> - “Building” = database.  
-> - “Layout” = schema (tables, columns, relationships).  
-> - “Construction” = create tables, indexes, constraints.  
-> - “Maintenance” = performance tuning, backups, scaling, security.
+> **Simple Analogy:**  
+> - **Database engineering** = Building and maintaining the entire system to store, organize, and retrieve data correctly.  
+> - "Building" = database.  
+> - "Layout" = schema (tables, columns, relationships).  
+> - "Construction" = create tables, indexes, constraints.  
+> - "Maintenance" = performance tuning, backups, scaling, security.
 
 From definitions:
 - **Database engineer**: professional who creates and manages databases for web apps, analytics, e-commerce, enterprise systems.
@@ -473,7 +473,7 @@ Build a **simple blog app with database**:
 
 ## ACTIVE LEARNING – YOUR TURN
 
-Answer these in your own words (Hinglish allowed):
+Answer these in your own words:
 
 1. What is **database engineering**? Define it clearly.
 2. What is a **database schema**? What does it define?

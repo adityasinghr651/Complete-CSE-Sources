@@ -1,5 +1,5 @@
 # Day 20: Redis Architecture and Advanced Data Structures (MERN Stack Edition)  
-*(Detailed, step-by-step, from first principles — with definitions, simple language, Hinglish intuition, diagrams, and production Node.js examples)*
+*(Detailed, step-by-step, from first principles — with definitions, simple language, intuition, diagrams, and production Node.js examples)*
 
 ---
 
@@ -30,9 +30,9 @@ Engineers needed a cache that was *smart*. They needed a cache that understood d
 
 ## SECTION 3 — Intuition
 
-Imagine tumhare ghar mein ek super-fast assistant hai (Imagine you have a super-fast assistant in your house).
+Imagine you have a super-fast assistant in your house.
 
-Memcached kaisa tha? (How was Memcached?) You give him a box labeled "Groceries" with 50 items inside. If you want to add "Milk", you have to take the whole box from him, open it, add Milk, and give the heavy box back.
+How was Memcached? You give him a box labeled "Groceries" with 50 items inside. If you want to add "Milk", you have to take the whole box from him, open it, add Milk, and give the heavy box back.
 
 **Redis is a smart assistant.**
 Instead of a sealed box, you tell Redis: "Keep a List called Groceries." Later, you just shout: "Redis, push Milk to the Groceries list!" Redis does the operation *internally* and instantly. You never have to lift the heavy box.
@@ -88,7 +88,7 @@ Because accessing RAM takes nanoseconds. Context-switching between CPU threads t
 * **Bitmaps:** A set of bit-level operations applied to a String.
   * **Why use it?** Tracking Daily Active Users (DAU) for 1 million users. Storing 1 million user IDs in an array takes megabytes. Flipping bits takes exactly **125 Kilobytes**.
 * **HyperLogLog:** A probabilistic data structure used to estimate the number of unique elements.
-  * **Why use it?** Counting unique IP addresses visiting your website. Uses a maximum of **12 KB of memory**, whether you count 1 thousand or 1 billion IPs, with 99.19% accuracy. (Hinglish: Jaise bheed dekh kar estimate lagana ki yahan 10,000 log hain).
+  * **Why use it?** Counting unique IP addresses visiting your website. Uses a maximum of **12 KB of memory**, whether you count 1 thousand or 1 billion IPs, with 99.19% accuracy. (Simple Analogy: Like estimating there are 10,000 people by looking at a crowd).
 * **Pub/Sub (Publish/Subscribe):** A messaging paradigm for real-time broadcasting.
   * **Internal Working:** It is **"Fire and Forget"**. If a Node.js server crashes and misses a message, it is lost forever. Used heavily with Socket.io for real-time chat.
 

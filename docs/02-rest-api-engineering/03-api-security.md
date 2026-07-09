@@ -21,11 +21,11 @@ If you skip these checks, an attacker can:
 - Spam your API and crash the server (No rate limiting).
 
 > [!TIP]
-> **Hinglish Intuition:**  
-> “API security matlab:  
-> 1. Client ko jo chahiye, sirf wahi mile.  
-> 2. Aur jo chahiye, woh safe tarike se execute ho.  
-> Nahi toh koi hacker ‘bhai, tu free data de raha hai’ bolke sab kuch chura lega.”
+> **Simple Analogy:**  
+> API security means:  
+> 1. The client only gets exactly what they are allowed to get.  
+> 2. And whatever they request is executed safely.  
+> Otherwise, a hacker could just ask for free data and steal everything.
 
 ***
 
