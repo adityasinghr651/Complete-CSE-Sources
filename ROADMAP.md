@@ -98,9 +98,11 @@ None. This module starts from first principles.
 - Relationships
 - Normalization
 - Indexes
+- Query Optimization
 - Transactions
 - ACID
-- Query Optimization
+- Replication
+- Partitioning
 
 ### Prerequisites
 No strict prerequisite.

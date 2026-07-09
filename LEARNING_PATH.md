@@ -102,9 +102,11 @@ Learn relational databases from first principles.
 - Relationships
 - Normalization
 - Indexes
-- Transactions
 - Query Optimization
+- Transactions
 - ACID
+- Replication
+- Partitioning
 
 ---
 
