@@ -78,7 +78,7 @@ A **Mock** is a fake object created specifically for testing that:
 ```mermaid
 graph TD
     subgraph Test Execution
-        Test[Unit Test] --> Logic[Business Logic<br/>processOrder()]
+        Test[Unit Test] --> Logic["Business Logic<br/>processOrder()"]
         
         Logic -.x|BANNED| RealAPI[Real Stripe API]
         Logic -->|Redirected| MockAPI[Mock Stripe Client]
