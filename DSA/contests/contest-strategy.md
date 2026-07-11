@@ -1,3 +1,0 @@
-# contest-strategy
-
-Placeholder.
