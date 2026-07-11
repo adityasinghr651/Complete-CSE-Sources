@@ -22,6 +22,9 @@ A backend engineer should understand:
 
 Every module builds on concepts introduced earlier. We strongly recommend following the learning path in order.
 
+### 🚀 Production-Grade Insights
+Throughout this handbook, you will find `> ✅ [Principal Engineer Note]:` callouts. These are advanced, production-level insights injected directly from real-world distributed systems engineering (e.g., handling Dead Letter Queues, avoiding the Thundering Herd problem, and designing idempotent APIs). Pay close attention to these notes to bridge the gap between "tutorial code" and "production systems".
+
 ---
 
 ## Learning Flow
