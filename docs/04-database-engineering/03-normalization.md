@@ -75,6 +75,9 @@ Example anomalies:
 - **Update anomaly**: Change price in one row, but not others.
 - **Delete anomaly**: Delete an order, lose product info.
 
+> ✅ **[Principal Engineer Note]: Data Corruption at Scale**
+> *In a high-concurrency production environment, "Update Anomalies" are lethal. If you have 10 instances of your backend running, and they try to update a user's email scattered across 50,000 duplicated rows concurrently, race conditions WILL occur. Half the database will have the old email, half will have the new email. Normalization isn't just about saving disk space; it's about enforcing a Single Source of Truth to prevent catastrophic state corruption during concurrent updates.*
+
 ---
 
 ## SECTION 3: NORMAL FORMS (1NF, 2NF, 3NF)
@@ -320,6 +323,9 @@ For web apps:
 Tradeoff:
 - Normalization: good for data integrity.
 - Denormalization: good for performance.
+
+> ✅ **[Principal Engineer Note]: CQRS and Materialized Views**
+> *Modern distributed systems solve the "Normalization vs Denormalization" tradeoff by doing BOTH. They keep the core transactional database in strict 3NF for safe writes. Then, they asynchronously generate denormalized "Read Models" into Elasticsearch or use **Materialized Views** in Postgres. This architectural pattern is called CQRS (Command Query Responsibility Segregation) — write to a normalized DB, read from a denormalized cache!*
 
 ---
 

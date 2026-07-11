@@ -135,6 +135,9 @@ Example:
 - System crashes immediately.
 - Data still in DB.
 
+> ✅ **[Principal Engineer Note]: The Write-Ahead Log (WAL)**
+> *How does a database guarantee Durability without destroying performance? If a DB had to write massive B-Tree rebalances to the SSD for every single transaction, it would be incredibly slow. Instead, it uses a **Write-Ahead Log (WAL)**. When you commit, the DB only writes a tiny, fast, append-only log to the SSD saying "I am going to change this". It updates the actual B-Tree in RAM and flushes it to disk later. If the power dies, on reboot, the DB reads the WAL and replays the changes!*
+
 ---
 
 ## SECTION 4: ISOLATION LEVELS
@@ -200,6 +203,9 @@ Problem: **phantom reads** (new rows appear).
 - Slow, but safest.
 
 No dirty reads, non-repeatable reads, or phantom reads.
+
+> ✅ **[Principal Engineer Note]: MVCC and Optimistic Locking**
+> *Saying Serializable runs "one at a time" is conceptually true but mechanically false in modern DBs like Postgres. Instead of literally locking the entire database (Pessimistic Locking), Postgres uses **MVCC (Multi-Version Concurrency Control)**. It allows transactions to run concurrently, but if it detects that Transaction B modified rows that Transaction A relied on, it aborts Transaction A with a serialization error. This is called **Optimistic Concurrency Control**. You must wrap your code in a retry loop when using Serializable!*
 
 ---
 

@@ -103,6 +103,9 @@ Search for 30:
 
 Very fast (O(log n)).
 
+> ✅ **[Principal Engineer Note]: Index Cardinality**
+> *A junior mistake is adding an index to a boolean column (e.g., `is_active` or `gender`). This is useless because the **cardinality** (number of unique values) is too low. If 90% of your users are `is_active = true`, the B-Tree index doesn't help narrow down the search enough. The PostgreSQL query optimizer will literally ignore your index and perform a Full Table Scan because it's faster than jumping back and forth between the index and the disk! Only index columns with high cardinality (like emails, IDs, timestamps).*
+
 ---
 
 ### 3.3 When to Use B-Tree Index
@@ -235,6 +238,9 @@ Less effective:
 WHERE status = 'pending'
 ```
 (because `user_id` is not used).
+
+> ✅ **[Principal Engineer Note]: The Leftmost Prefix Rule**
+> *This is critical for interviews and production. If you have a composite index on `(A, B, C)`, the database can use this index to search for `A`, or `(A, B)`, or `(A, B, C)`. However, it CANNOT use this index to search for just `B`, just `C`, or `(B, C)`. The index is a sorted tree, and you can't navigate it without knowing the first sorting criteria. Order your composite indexes from highest cardinality to lowest cardinality!*
 
 ---
 

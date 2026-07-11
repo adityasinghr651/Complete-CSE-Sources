@@ -210,6 +210,9 @@ JOIN orders o ON o.user_id = u.id
 WHERE o.status = 'pending';
 ```
 
+> ✅ **[Principal Engineer Note]: The ORM N+1 Problem**
+> *In modern backends, the biggest source of slow queries is the **N+1 Problem** caused by ORMs (like Prisma or TypeORM). A junior engineer writes `users.map(u => u.getOrders())`. This executes 1 query to get `N` users, and then `N` separate queries to get the orders for each user! Always use `JOIN` or ORM `include/populate` features to fetch related data in exactly 1 or 2 queries.*
+
 ### 5.5 Use `EXPLAIN` to Analyze Queries
 
 ```sql
@@ -236,6 +239,9 @@ If index is on `email`, `LOWER(email)` may not use it.
 Better:
 - Store lowercase emails.
 - Or use index on `LOWER(email)` if supported.
+
+> ✅ **[Principal Engineer Note]: Function-Based Indexes**
+> *PostgreSQL natively supports Function-Based Indexes precisely to solve this issue. If your app frequently searches case-insensitively, you can run `CREATE INDEX idx_lower_email ON users (LOWER(email));`. Now, `WHERE LOWER(email) = 'raj@example.com'` will use an Index Scan instead of a Sequential Scan. Alternatively, use the `CITEXT` (Case-Insensitive Text) data type in Postgres.*
 
 ---
 

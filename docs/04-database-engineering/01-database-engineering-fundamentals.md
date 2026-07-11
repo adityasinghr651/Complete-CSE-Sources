@@ -154,6 +154,9 @@ Key aspects:
 - Database engineer: builds the **database building**.
 - Data engineer: builds the **pipelines** that bring data from many sources into warehouses.
 
+> ✅ **[Principal Engineer Note]: OLTP vs OLAP**
+> *To put it in enterprise terms: Database Engineers focus on **OLTP** (Online Transaction Processing). Your job is to make sure when a user buys a coffee, the transaction is recorded in 50 milliseconds without crashing. Data Engineers focus on **OLAP** (Online Analytical Processing). Their job is to run a massive query at midnight to figure out how many coffees were sold globally in the last year. OLTP = Speed & Accuracy. OLAP = Volume & Aggregation.*
+
 ---
 
 ## SECTION 4: CORE RESPONSIBILITIES OF DATABASE ENGINEERING
@@ -334,6 +337,9 @@ Data not in tables:
   - Data is unstructured/semi-structured.
   - High scalability needed.
   - Flexible schema.
+
+> ✅ **[Principal Engineer Note]: The NoSQL Trap**
+> *In the 2010s, there was a massive trend where startups used MongoDB just because "writing schemas is annoying." This is a catastrophic mistake. If your data is relational (e.g., Users have Posts, Posts have Comments), use a Relational SQL database. Only use NoSQL when you actually have unstructured document data or you need insane horizontal write-scaling (like logging 10,000 IoT sensor events per second).*
 
 ### 6.3 ACID Properties
 For relational databases:

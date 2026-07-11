@@ -248,6 +248,9 @@ Tradeoff:
 - Normalization: good for data integrity.
 - Denormalization: good for performance.
 
+> ✅ **[Principal Engineer Note]: The Denormalization Inflection Point**
+> *In university, they teach you to always use 3NF. In Silicon Valley, we routinely violate 3NF for performance. For example, if you have an `orders` table and an `order_items` table, 3NF dictates you must `SUM(price)` on `order_items` every time you want the order total. But if you have 10 million orders, this `SUM` destroys your CPU. Instead, we **denormalize** by adding a `total_price` column to the `orders` table and updating it via background workers or triggers. Storage is cheap, CPU is expensive.*
+
 ---
 
 ## SECTION 4: INDEXING STRATEGIES
@@ -574,6 +577,9 @@ Split columns into groups.
 
 Use when:
 - Some columns are large and rarely accessed.
+
+> ✅ **[Principal Engineer Note]: Partitioning vs Sharding**
+> *It's critical to know the difference. **Partitioning** is splitting a massive table into smaller tables on the **SAME** database server (e.g., splitting by Year). **Sharding** (or Horizontal Sharding) is splitting that table across **MULTIPLE** database servers (e.g., Users A-M on Server 1, Users N-Z on Server 2). Sharding gives you infinite scale but makes Cross-Shard Joins practically impossible. You only Shard when a single machine physically cannot hold your data anymore.*
 
 ---
 
