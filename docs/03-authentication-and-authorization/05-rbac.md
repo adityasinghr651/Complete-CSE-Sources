@@ -213,6 +213,9 @@ CREATE TABLE users (
 );
 ```
 
+> ✅ **[Principal Engineer Note]: Beyond RBAC → ABAC (Attribute-Based Access Control)**
+> *At massive scale (like AWS IAM), basic RBAC isn't enough. You need **ABAC**. In ABAC, permissions are based on attributes. Example: "You can delete this EC2 instance, BUT ONLY IF you logged in with Multi-Factor Authentication (MFA) AND your IP is on the corporate VPN AND it is between 9 AM and 5 PM." Enterprise software often evolves from simple roles to complex policy engines (like OPA - Open Policy Agent) evaluating JSON rules on every request.*
+
 ### 5.2 Advanced Permission Check in Code
 
 ```js
@@ -280,6 +283,9 @@ app.delete('/users/:id',
   deleteUserHandler
 );
 ```
+
+> ✅ **[Principal Engineer Note]: The GraphQL RBAC Bypass Vulnerability**
+> *A very common mistake mid-level engineers make is securing all their REST routes (`app.delete(...)`) beautifully with middleware, but then they add a GraphQL endpoint (`/graphql`) later and forget to add RBAC inside the individual GraphQL Resolvers. Since GraphQL only uses one POST endpoint, the route-level middleware is useless. Hackers query the graph directly and bypass all your security. Always enforce authorization closest to the data fetching layer, not just the HTTP routing layer!*
 
 ***
 

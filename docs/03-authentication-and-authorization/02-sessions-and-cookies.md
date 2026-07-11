@@ -241,6 +241,9 @@ value: { "userId": 42, "role": "user" }
 - **Cons:** Data can be lost if Redis restarts (unless persistence is configured).
 - *(Redis is the industry standard for production session management).*
 
+> ✅ **[Principal Engineer Note]: Session Fixation & Rotation**
+> *A major vulnerability in session management is "Session Fixation." If an attacker gives a victim a valid anonymous `sessionId`, and the victim logs in, the attacker now shares that authenticated session! In production, you must ALWAYS rotate (regenerate) the `sessionId` at the exact moment of login or privilege escalation (e.g., entering a sudo mode).*
+
 ***
 
 ## SECTION 6: SESSION LIFECYCLE
@@ -280,6 +283,9 @@ Both achieve the same goal: "Remember this user is logged in."
 - Token is cryptographically **signed** by the server.
 - **Pros:** Stateless (no DB lookup needed to verify auth). Easier to scale across microservices.
 - **Cons:** Hard to revoke (token is valid until expiry), larger payload sizes.
+
+> ✅ **[Principal Engineer Note]: The Hybrid Approach (Opaque Tokens + JWTs)**
+> *In reality, massive companies (like Netflix or Slack) rarely use pure stateless JWTs for everything, because revoking a compromised token is too hard. They use a **Hybrid Approach**: The browser gets an "Opaque Token" (which is essentially a session ID) stored in an `HttpOnly` cookie. The API Gateway receives this cookie, looks it up in Redis (verifying it hasn't been revoked), and then the Gateway generates a short-lived (5-minute) stateless JWT and passes it to the internal microservices. This gives you absolute revocation control at the edge, and stateless speed internally!*
 
 *(We will cover JWTs deeply on Day 10).*
 

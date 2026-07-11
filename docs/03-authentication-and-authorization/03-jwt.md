@@ -124,6 +124,9 @@ signature = HMACSHA256(
 - The server re-signs them using its secret key.
 - If the server's generated signature matches the signature attached to the token → **Valid and Untampered.**
 
+> ✅ **[Principal Engineer Note]: The "alg: none" Vulnerability**
+> *Historically, many JWT libraries had a catastrophic flaw. An attacker would decode the JWT, change the header to `{"alg": "none"}`, change their `userId` to `1` (admin), and strip the signature entirely. Because the header said "no signature required", the server accepted it! In production, you must explicitly tell your JWT verification library which algorithms are allowed (e.g., strictly `['HS256']`).*
+
 ***
 
 ### 2.3 How JWT Works (Simple Flow)
@@ -296,6 +299,9 @@ localStorage.setItem("accessToken", "eyJh...");
 - Server verifies signature mathematically, NO DB lookup required.
 - **Pros:** Extremely fast. Stateless (perfect for distributed microservices).
 - **Cons:** Harder to immediately revoke (the token is valid until its `exp` time). Requires building refresh token rotation logic.
+
+> ✅ **[Principal Engineer Note]: The JWT Revocation Paradox (Denylists)**
+> *The biggest lie told about JWTs is that they are perfectly stateless. What happens if a user clicks "Logout" but their JWT is still valid for 15 minutes? If an attacker steals it, they can use it. To truly solve logout with JWTs in production, companies build a **Redis Denylist**. When a user logs out, the JWT's unique ID (`jti` claim) is stored in Redis until its natural expiration time. The API Gateway checks this Redis Denylist on every request. Ironically, this DB lookup makes JWTs stateful again!*
 
 ***
 

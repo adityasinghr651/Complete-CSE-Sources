@@ -226,6 +226,9 @@ Google returns:
 
 *The user is now logged in to your app via OAuth!*
 
+> ✅ **[Principal Engineer Note]: The OAuth Account Takeover Vulnerability**
+> *If a user registered on your site via Password using `ceo@company.com`, and later someone clicks "Login with GitHub", you might just check the email and log them into the CEO's account. This is a massive vulnerability! Why? Because some identity providers (like old GitHub or custom SSO) allow users to create accounts with unverified emails. An attacker creates a fake GitHub account as `ceo@company.com`, logs into your app via GitHub, and takes over the real CEO's account. ALWAYS check if `email_verified: true` from the provider, and ideally, force the user to prove ownership before linking OAuth to a password-based account.*
+
 ***
 
 ## SECTION 5: OAUTH SCOPES
@@ -246,6 +249,9 @@ If the user denies the consent screen, the OAuth flow fails and redirects back w
 ### 6.1 Use Authorization Code Flow (Not Implicit)
 - **Old (Implicit Flow):** Returned the access token directly in the URL. Highly insecure as it leaks in browser history.
 - **New (Authorization Code Flow):** Returns a one-time `code` in the URL. The backend securely exchanges the `code` for a token via a back-channel. Always use this.
+
+> ✅ **[Principal Engineer Note]: PKCE (Proof Key for Code Exchange)**
+> *What if you are building a Mobile App or a pure React SPA with no backend? You can't use the `client_secret` because anyone can extract it from the app's code. In this case, you MUST use the **Authorization Code Flow with PKCE**. PKCE generates a dynamic, random secret for every single login request instead of using a static `client_secret`. It is the modern gold standard for OAuth security.*
 
 ### 6.2 Use the `state` Parameter
 - The `state` parameter prevents CSRF (Cross-Site Request Forgery) attacks. 

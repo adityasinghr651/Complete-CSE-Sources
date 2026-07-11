@@ -188,6 +188,9 @@ POST /register
      passwordHash: a1b2c3... (hashed)
      ```
 
+> ✅ **[Principal Engineer Note]: Memory-Hard Hashing (Argon2 vs Bcrypt)**
+> *While `bcrypt` is the classic recommendation, modern Silicon Valley standards prefer `Argon2`. Why? Because hackers use massive GPU clusters to crack leaked database hashes. GPUs are great at math (breaking bcrypt) but terrible at memory allocation. Argon2 is designed to be "Memory-Hard", requiring massive amounts of RAM to compute the hash, effectively rendering GPU-based brute-forcing completely useless.*
+
 ***
 
 ### Step 2: User Login
@@ -266,6 +269,9 @@ if (post.userId !== user.id) {
   return res.status(403).json({ message: 'Not your post' });
 }
 ```
+
+> ✅ **[Principal Engineer Note]: IDOR (Insecure Direct Object Reference)**
+> *If you forget the 3 lines of code above, you have just introduced an IDOR vulnerability. An IDOR occurs when an API endpoint like `DELETE /posts/100` simply assumes the caller is the owner because they are logged in. A malicious user logs in, writes a script to iterate from `DELETE /posts/1` to `100,000`, and deletes every single post in your database. Always check ownership!*
 
 ***
 
