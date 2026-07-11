@@ -1,0 +1,3 @@
+# contest-notes
+
+Placeholder.

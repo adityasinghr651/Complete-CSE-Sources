@@ -1,0 +1,3 @@
+# rating-guide
+
+Placeholder.
