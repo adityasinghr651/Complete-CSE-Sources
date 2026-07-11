@@ -128,6 +128,9 @@ graph TD
 - DNS responses are **cached** at multiple levels to reduce load and latency.
 - DNS is **not secure by default** (can be spoofed); modern web uses **DNSSEC**, **DoH** (DNS over HTTPS), **DoT** (DNS over TLS).
 
+> ✅ **[Principal Engineer Note]: The Danger of DNS TTL (Time to Live)**
+> *In production, a common mistake junior engineers make is migrating a database to a new server without lowering the DNS TTL beforehand. If your TTL is set to 24 hours, and you change the IP address, millions of users will be routed to the old (dead) IP address for 24 hours because their ISP cached it. Always lower your TTL to 60 seconds a few days before a major migration!*
+
 ***
 
 ### 4. IP Address and Routing
@@ -256,6 +259,9 @@ sequenceDiagram
 > **Tradeoff:**  
 > - TCP = reliable but slower (overhead).  
 > - UDP = fast but unreliable (you handle losses if needed).
+
+> ✅ **[Principal Engineer Note]: TCP Head-of-Line Blocking**
+> *TCP guarantees order. If you send Packets 1, 2, 3 and Packet 1 is dropped by a router, TCP will halt and refuse to process Packets 2 and 3 until Packet 1 is retransmitted. This is called **Head-of-Line (HoL) Blocking** and it causes severe latency on bad Wi-Fi networks. This is exactly why Google invented HTTP/3 to run over UDP (using the QUIC protocol), eliminating HoL blocking entirely. Interviewers love asking this!*
 
 ***
 
@@ -437,6 +443,9 @@ Under the hood:
 
 - Node.js uses OS network stack.
 - Libuv handles async I/O, including TCP.
+
+> ✅ **[Principal Engineer Note]: The OS Kernel & Sockets**
+> *When your Node.js app accepts a TCP connection, the Linux Kernel creates a "Socket" and assigns it a File Descriptor (FD). Linux treats network connections exactly like files on a hard drive. A common production failure is the "Too many open files" error. If you get a sudden spike of 10,000 users and your Linux server is configured with a max of 1,024 file descriptors, your server will instantly crash. You must tune `ulimit -n` in production!*
 
 ### 2. Why This Matters for Scalability
 

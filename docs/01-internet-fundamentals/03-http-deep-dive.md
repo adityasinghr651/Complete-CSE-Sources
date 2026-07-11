@@ -62,11 +62,13 @@ Common methods and their typical use in REST APIs:
 - **HEAD**: Same as GET but no body; used to check headers/metadata.
 - **OPTIONS**: Ask the server what methods/headers are allowed (used heavily in CORS preflight).
 
-**REST API Mapping:**
 - Create → `POST`
 - Read → `GET`
 - Update → `PUT/PATCH`
 - Delete → `DELETE`
+
+> ✅ **[Principal Engineer Note]: The Power of Idempotency**
+> *In distributed systems, networks fail constantly. If a mobile app sends a `POST /payments` request, and the Wi-Fi drops before the `200 OK` response arrives, the app doesn't know if the payment succeeded. If it retries, it might charge the user twice! This is why `PUT` and `DELETE` are **idempotent** (doing it 10 times has the same effect as doing it once). For `POST`, production systems (like Stripe) require clients to pass an `Idempotency-Key` header. The backend checks Redis for this key. If it sees a retry for a key it already processed, it just returns the cached success response without double-charging the credit card.*
 
 ***
 
@@ -155,6 +157,9 @@ For non-simple requests, the browser first sends an `OPTIONS` request to check p
 
 > [!NOTE]
 > CORS is a **browser-side protection**. A backend calling another backend is not restricted by CORS.
+
+> ✅ **[Principal Engineer Note]: The "Echo Origin" CORS Vulnerability**
+> *A very common mistake startups make when trying to fix CORS errors is configuring the backend to read the incoming `Origin` header and blindly echo it back in the `Access-Control-Allow-Origin` response, paired with `Access-Control-Allow-Credentials: true`. This effectively bypasses CORS entirely and allows ANY malicious website on the internet to make authenticated requests to your API on behalf of your users. Always whitelist exact domains (e.g., `['https://app.mycompany.com']`) in production CORS configs!*
 
 ***
 

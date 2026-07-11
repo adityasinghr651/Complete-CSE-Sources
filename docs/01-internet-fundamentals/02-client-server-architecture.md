@@ -91,6 +91,9 @@ Many modern web apps follow **3 tiers**:
 
 Flow: **Browser → Web Server / App → Database → App → Browser**.
 
+> ✅ **[Principal Engineer Note]: The Reality of N-Tier Architecture**
+> *While textbooks teach "3-tier", a real Silicon Valley production environment is usually N-tier. We inject a CDN before the Presentation Tier, a Load Balancer before the Application Tier, an In-Memory Cache (Redis) before the Data Tier, and asynchronous Message Queues (Kafka) beside the Application Tier. 3-tier is just the logical starting point.*
+
 ***
 
 ## SECTION 3: VISUAL DIAGRAMS
@@ -241,6 +244,9 @@ app.listen(3000, () => {
   console.log('API server listening on port 3000');
 });
 ```
+
+> ✅ **[Principal Engineer Note]: Connection Pooling**
+> *In the code above, `dbClient.query(...)` hides a massive production secret. Beginners often open a new database connection for every single HTTP request. Establishing a TCP connection to PostgreSQL takes ~10-20ms and allocates ~10MB of RAM per connection. If 1,000 users hit this endpoint simultaneously, the database will instantly crash from OOM (Out of Memory). Production backends ALWAYS use a **Connection Pool** (a persistent set of 10-50 reusable database connections) to multiplex thousands of HTTP requests across a tiny number of actual DB connections.*
 
 > [!NOTE]
 > **Notice:**

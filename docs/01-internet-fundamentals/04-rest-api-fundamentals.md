@@ -61,6 +61,9 @@ Key concepts:
 - **Machine-to-machine communication**  
   - Example: A backend calling a payment gateway (Stripe) or an SMS service (Twilio).
 
+> ✅ **[Principal Engineer Note]: API Versioning (The Golden Rule)**
+> *In production, the moment a third-party client or a mobile app starts using your API, the Contract is locked. If you change a field name from `userId` to `user_id`, every mobile app in the world crashes. Experienced engineers ALWAYS version their APIs from Day 1 (e.g., `https://api.example.com/v1/users`). When a breaking change is needed, you build `/v2/users` and run them side-by-side until all clients migrate.*
+
 ***
 
 ### 2.2 REST: Representational State Transfer
@@ -147,6 +150,9 @@ RESTful mapping to HTTP methods:
 - Use `GET /students` & `GET /students/{id}` for reading.
 - Use `PUT` for full replacements, `PATCH` for partial updates.
 - Use `DELETE` for removal.
+
+> ✅ **[Principal Engineer Note]: Soft Deletes in Production**
+> *While REST dictates using the `DELETE` method to remove resources, in enterprise production systems, we almost NEVER run `DELETE FROM table;` in our SQL databases. Data is too valuable and compliance (like SOC2) requires audit trails. Instead, the backend API receives a `DELETE /users/42` HTTP request, but under the hood, it executes an `UPDATE users SET deleted_at = NOW() WHERE id = 42`. This is called a **Soft Delete**. The API responds with `204 No Content`, maintaining the REST illusion, while safely preserving the data.*
 
 ***
 
