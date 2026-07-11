@@ -162,13 +162,40 @@ public boolean containsDuplicate(int[] nums) {
 
 ## Practice Checklist
 
-- [ ] [Contains Duplicate (LeetCode 217)](https://leetcode.com/problems/contains-duplicate/)
-- [ ] [Valid Anagram (LeetCode 242)](https://leetcode.com/problems/valid-anagram/)
-- [ ] [Two Sum (LeetCode 1)](https://leetcode.com/problems/two-sum/)
-- [ ] [Group Anagrams (LeetCode 49)](https://leetcode.com/problems/group-anagrams/)
-- [ ] [Longest Consecutive Sequence (LeetCode 128)](https://leetcode.com/problems/longest-consecutive-sequence/)
-- [ ] [Product of Array Except Self (LeetCode 238)](https://leetcode.com/problems/product-of-array-except-self/)
-- [ ] [Trapping Rain Water (LeetCode 42)](https://leetcode.com/problems/trapping-rain-water/)
+### Easy
+
+| # | Problem                    | Frequency | Importance |
+| - | -------------------------- | --------- | ---------- |
+| 1 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | 9/10      | 9/10       |
+| 2 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | 8/10      | 8/10       |
+| 3 | [Two Sum](https://leetcode.com/problems/two-sum/) | 10/10     | 10/10      |
+| 4 | [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/) | 7/10      | 7/10       |
+| 5 | [Most Common Element](https://leetcode.com/problems/majority-element/) | 6/10      | 6/10       |
+| 6 | [Unique Morse Code Words](https://leetcode.com/problems/unique-morse-code-words/) | 5/10      | 5/10       | 
+
+### Medium
+
+| #  | Problem                                  | Frequency | Importance |
+| -- | ---------------------------------------- | --------- | ---------- |
+| 1  | [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | 9/10      | 10/10      |
+| 2  | [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) | 8/10      | 9/10       |
+| 3  | [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) | 8/10      | 9/10       |
+| 4  | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | 9/10      | 10/10      |
+| 5  | [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/) | 7/10      | 8/10       |
+| 6  | [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) | 7/10      | 8/10       |
+| 7  | [Merge Intervals](https://leetcode.com/problems/merge-intervals/) | 9/10      | 9/10       |
+| 8  | [Maximum Subarray (Kadane's)](https://leetcode.com/problems/maximum-subarray/) | 10/10     | 10/10      |
+| 9  | [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/) | 8/10      | 8/10       |
+| 10 | [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) | 7/10      | 7/10       |
+
+### Hard
+
+| # | Problem                     | Frequency | Importance |
+| - | --------------------------- | --------- | ---------- |
+| 1 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) | 9/10      | 10/10      |
+| 2 | [First Missing Positive](https://leetcode.com/problems/first-missing-positive/) | 8/10      | 9/10       |
+| 3 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | 9/10      | 10/10      |
+| 4 | [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) | 8/10      | 9/10       |
 
 ---
 
