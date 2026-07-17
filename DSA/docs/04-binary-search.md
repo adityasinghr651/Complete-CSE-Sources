@@ -1,13 +1,5 @@
 # 📚 Day 4: Binary Search — Complete Mastery Guide (Enhanced Edition)
 
----
-
-Welcome! 👋 Having completed **Day 1 (Arrays & Hashing)**, **Day 2 (Two Pointers)**, and **Day 3 (Sliding Window)**, we are now shifting to **Day 4: Binary Search** — which is **the most powerful algorithm for O(log n) searching** and **the most frequently asked optimization technique in FAANG interviews**.
-
-This guide includes **3x more detailed explanations than previous days**, along with **step-by-step animations**, **6 different templates**, and **100% working direct links** (LeetCode + CodeChef). Let's get started!
-
----
-
 ## SECTION 1: Intuition Building — Animation Style
 
 ### Why Binary Search Exists? 🤔

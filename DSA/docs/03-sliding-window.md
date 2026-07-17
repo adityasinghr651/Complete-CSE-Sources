@@ -1,13 +1,5 @@
 # 📚 Day 3: Sliding Window — Complete Mastery Guide (Enhanced Edition)
 
----
-
-Welcome! 👋 Having completed **Day 1 (Arrays & Hashing)** and **Day 2 (Two Pointers)**, we are now shifting to **Day 3: Sliding Window** — which is **the most powerful technique for subarray/string optimization**.
-
-This guide includes **3x more detailed explanations than previous days**, along with **animation-style diagrams**, **step-by-step dry runs**, and **100% working direct links** (LeetCode + CodeChef). Let's get started!
-
----
-
 ## SECTION 1: Intuition Building — Deep Dive with Animations
 
 ### Why Sliding Window Exists? 🤔

@@ -1,20 +1,5 @@
 # 📚 Day 7: Heap & Priority Queue — Complete Mastery Guide (Enhanced Edition for Students)
 
----
-
-Welcome! 👋 Having completed **Day 1 to 6**, we are now shifting to **Day 7: Heap & Priority Queue**. This guide provides **COMPREHENSIVE NOTES**, **DEFINITIONS**, **ALL ESSENTIAL POINTS for students**, and **100% working direct links** (LeetCode + CodeChef + Codeforces).
-
-This guide includes everything you need:
-✅ **Complete Definitions**
-✅ **All Notes Making Points**
-✅ **Step-by-Step Explanations**
-✅ **Visual Diagrams**
-✅ **Code Examples**
-✅ **Interview Tips**
-✅ **Working Links**
-
----
-
 ## SECTION 1: COMPLETE DEFINITIONS & CORE CONCEPTS (For Students)
 
 ### What is a Heap? 🤔

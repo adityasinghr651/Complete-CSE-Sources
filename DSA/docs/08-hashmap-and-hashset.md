@@ -1,20 +1,5 @@
 # 📚 Day 8: HashMap & HashSet — Complete Mastery Guide (Enhanced Edition for Students)
 
----
-
-Welcome! 👋 Having completed **Day 1 to 7**, we are now shifting to **Day 8: HashMap & HashSet**. This guide provides **COMPREHENSIVE NOTES**, **DEFINITIONS**, **ALL ESSENTIAL POINTS for students**, **step-by-step animations**, **visual diagrams**, **code examples**, **interview tips**, and **100% working direct links** (LeetCode + CodeChef + Codeforces).
-
-This guide includes everything you need:
-✅ **Complete Definitions**
-✅ **All Notes Making Points**
-✅ **Step-by-Step Explanations**
-✅ **Visual Diagrams**
-✅ **Code Examples (Java + C++)**
-✅ **Interview Tips**
-✅ **Working Links**
-
----
-
 ## SECTION 1: COMPLETE DEFINITIONS & CORE CONCEPTS (For Students)
 
 ### What is HashMap? 🤔

@@ -1,13 +1,5 @@
 # 📚 Day 6: Stack & Queue — Complete Mastery Guide (Enhanced Edition)
 
----
-
-Welcome! 👋 Having completed **Day 1 to 5**, we are now shifting to **Day 6: Stack & Queue** — which are **2 of the most fundamental linear data structures** and **frequently asked concepts in FAANG interviews**.
-
-This guide includes **3x more detailed explanations than previous days**, along with **step-by-step animations**, **5 stack patterns + 4 queue patterns**, and **100% working direct links** (LeetCode + CodeChef + Codeforces). Let's get started!
-
----
-
 ## SECTION 1: Intuition Building — Animation Style
 
 ### What are Stack & Queue? 🤔

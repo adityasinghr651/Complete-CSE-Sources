@@ -1,13 +1,5 @@
 # 📚 Day 5: Recursion & Backtracking — Complete Mastery Guide (Enhanced Edition)
 
----
-
-Welcome! 👋 Having completed **Day 1 (Arrays & Hashing)**, **Day 2 (Two Pointers)**, **Day 3 (Sliding Window)**, and **Day 4 (Binary Search)**, we are now shifting to **Day 5: Recursion & Backtracking** — which is **the foundation of DSA** and **the most frequently asked advanced technique in FAANG interviews**.
-
-This guide includes **3x more detailed explanations than previous days**, along with **step-by-step recursion tree animations**, **6 different patterns**, and **100% working direct links** (LeetCode + CodeChef + **Codeforces**). Let's get started!
-
----
-
 ## SECTION 1: Intuition Building — Animation Style
 
 ### Why Recursion Exists? 🤔
