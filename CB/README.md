@@ -52,10 +52,6 @@ Detailed progression can be found in our [Learning Path](./LEARNING_PATH.md) and
 Beyond the core phases, this repository provides extensive resources to ensure you are production-ready.
 
 - 📁 `docs/`: The core chapters and theoretical foundations of the handbook.
-- 📁 `cheatsheets/`: Quick, high-density reference guides for standard technologies (Docker, SQL, Git, etc.).
-- 📁 `interview/`: Dedicated preparation material for backend and system design interviews.
-- 📁 `projects/`: Hands-on assignments ranging from starter scripts to production-grade architectures.
-- 📁 `assets/`: Diagram and visual assets used throughout the documentation.
 
 ---
 

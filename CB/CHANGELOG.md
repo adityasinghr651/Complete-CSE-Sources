@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Principal Engineer Review**: The entire `docs/` directory has been comprehensively reviewed by a Principal Backend Engineer. Added production-grade insights, advanced distributed systems concepts (like Dead Letter Queues, Idempotency, MVCC, and Testcontainers), and `> ✅ [Principal Engineer Note]:` callouts throughout all phases.
 - Complete initial repository scaffolding.
 - Root repository documentation (`README.md`, `CONTRIBUTING.md`, `FAQ.md`, `CODE_OF_CONDUCT.md`).
-- Placeholder files for Cheatsheets, Interviews, and Projects.
 
 ### Changed
 - Refactored repository structure to follow a 9-phase progressive curriculum.
