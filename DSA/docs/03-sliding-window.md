@@ -854,33 +854,51 @@ public List<Integer> findAnagrams(String s, String p) {
 
 **Problem**: Find maximum sum of contiguous subarray of size exactly K
 
-**Solution (Fixed Window)**:
+**Solution (Fixed Window with HashSet)**:
 ```java
-public int maxSum(int[] arr, int k) {
-    if (arr.length < k) return 0;
-    
-    int left = 0;
-    int currentSum = 0;
-    int maxSum = 0;
-    
-    for (int right = 0; right < arr.length; right++) {
-        currentSum += arr[right];
-        
-        if (right - left + 1 > k) {
-            currentSum -= arr[left];
-            left++;
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+
+        if (nums.length < k)
+            return 0;
+
+        int left = 0;
+        long currentSum = 0;
+        long maxSum = 0;
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int right = 0; right < nums.length; right++) {
+
+            // Remove duplicates
+            while (set.contains(nums[right])) {
+                set.remove(nums[left]);
+                currentSum -= nums[left];
+                left++;
+            }
+
+            set.add(nums[right]);
+            currentSum += nums[right];
+
+            // Keep window size <= k
+            if (right - left + 1 > k) {
+                set.remove(nums[left]);
+                currentSum -= nums[left];
+                left++;
+            }
+
+            // Window of exactly k unique elements
+            if (right - left + 1 == k) {
+                maxSum = Math.max(maxSum, currentSum);
+            }
         }
-        
-        if (right - left + 1 == k) {
-            maxSum = Math.max(maxSum, currentSum);
-        }
+
+        return maxSum;
     }
-    
-    return maxSum;
 }
 ```
 
-**Time**: O(n) | **Space**: O(1)
+**Time**: O(n) | **Space**: O(k)
 
 ---
 
