@@ -1,3 +1,0 @@
-# recursion Cheatsheet
-
-Placeholder.

@@ -1,3 +1,0 @@
-# stl-alternatives Cheatsheet
-
-Placeholder.

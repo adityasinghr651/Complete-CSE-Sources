@@ -1,3 +1,0 @@
-# dp Cheatsheet
-
-Placeholder.

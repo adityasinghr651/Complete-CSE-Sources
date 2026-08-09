@@ -1,3 +1,0 @@
-# java-templates Cheatsheet
-
-Placeholder.

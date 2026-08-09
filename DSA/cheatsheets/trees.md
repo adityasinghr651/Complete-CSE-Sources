@@ -1,3 +1,0 @@
-# trees Cheatsheet
-
-Placeholder.

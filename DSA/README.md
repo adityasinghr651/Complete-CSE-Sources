@@ -23,8 +23,6 @@ We believe in **First-Principles Thinking**. Instead of rote memorization, this 
 ```text
 📦 DSA
  ┣ 📂 docs/               # Detailed daily mastery guides
- ┣ 📂 assets/             # Diagrams and visual assets
- ┣ 📂 cheatsheets/        # Quick revision notes
  ┣ 📜 README.md           # You are here
  ┗ 📜 ROADMAP.md          # 30-Day Master Learning Plan
 ```

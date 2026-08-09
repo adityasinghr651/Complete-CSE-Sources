@@ -1,3 +1,0 @@
-# big-o Cheatsheet
-
-Placeholder.
