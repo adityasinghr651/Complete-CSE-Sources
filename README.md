@@ -30,11 +30,11 @@ This repository is split into two massive domains. Choose where you want to star
 
 <div align="center">
 
-| 🌐 The Complete Backend (CB) | 🧠 Data Structures & Algorithms (DSA) |
-| :--- | :--- |
-| **Focus:** System Design, APIs, Databases, Scalability, DevOps, and Caching. | **Focus:** First-principles problem solving, FAANG patterns, time/space complexity. |
-| **Status:** 9 Comprehensive Phases | **Status:** 30-Day Master Learning Plan |
-| [👉 **Explore Backend Track**](./CB/README.md) | [👉 **Explore DSA Track**](./DSA/README.md) |
+| 🌐 The Complete Backend (CB) | 🧠 Data Structures & Algorithms (DSA) | ⚡ JavaScript Master Plan |
+| :--- | :--- | :--- |
+| **Focus:** System Design, APIs, Databases, Scalability, DevOps. | **Focus:** Problem solving, FAANG patterns, time/space complexity. | **Focus:** Core JS, DOM, Async, Vanilla Web Dev. |
+| **Status:** 9 Comprehensive Phases | **Status:** 30-Day Master Learning Plan | **Status:** 12-Phase Industrial Curriculum |
+| [👉 **Explore Backend**](./CB/README.md) | [👉 **Explore DSA**](./DSA/README.md) | [👉 **Explore JavaScript**](./Javascript-Master-Plan/README.md) |
 
 </div>
 
@@ -71,6 +71,8 @@ Our folder structure is intentionally clean and modular:
  ┃ ┣ 📂 docs/             # 30-Day step-by-step algorithm mastery guides
  ┃ ┣ 📂 cheatsheets/      # Quick revision guides for FAANG interviews
  ┃ ┗ 📜 README.md         # Entry point for the DSA track
+ ┣ 📂 Javascript-Master-Plan/ # The zero-to-production JavaScript guide
+ ┃ ┗ 📜 README.md         # Entry point for the JavaScript track
  ┣ 📜 README.md           # ✨ You are here
  ┗ 📜 .gitignore
 ```
