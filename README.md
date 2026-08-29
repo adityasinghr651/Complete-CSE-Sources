@@ -30,11 +30,11 @@ This repository is split into two massive domains. Choose where you want to star
 
 <div align="center">
 
-| 🌐 The Complete Backend (CB) | 🧠 Data Structures & Algorithms (DSA) | ⚡ JavaScript Master Plan |
-| :--- | :--- | :--- |
-| **Focus:** System Design, APIs, Databases, Scalability, DevOps. | **Focus:** Problem solving, FAANG patterns, time/space complexity. | **Focus:** Core JS, DOM, Async, Vanilla Web Dev. |
-| **Status:** 9 Comprehensive Phases | **Status:** 30-Day Master Learning Plan | **Status:** 12-Phase Industrial Curriculum |
-| [👉 **Explore Backend**](./CB/README.md) | [👉 **Explore DSA**](./DSA/README.md) | [👉 **Explore JavaScript**](./Javascript-Master-Plan/README.md) |
+| 🌐 The Complete Backend (CB) | 🧠 Data Structures & Algorithms (DSA) | ⚡ JavaScript Master Plan | ☕ Java DSA Mastery |
+| :--- | :--- | :--- | :--- |
+| **Focus:** System Design, APIs, Databases, Scalability, DevOps. | **Focus:** Problem solving, FAANG patterns, time/space complexity. | **Focus:** Core JS, DOM, Async, Vanilla Web Dev. | **Focus:** Core Java, Collections, DSA APIs, Blank-Editor Fluency. |
+| **Status:** 9 Comprehensive Phases | **Status:** 30-Day Master Learning Plan | **Status:** 12-Phase Industrial Curriculum | **Status:** 18-Part Bootcamp Curriculum |
+| [👉 **Explore Backend**](./CB/README.md) | [👉 **Explore DSA**](./DSA/README.md) | [👉 **Explore JavaScript**](./Javascript-Master-Plan/README.md) | [👉 **Explore Java**](./Java-DSA-Master-Plan/README.md) |
 
 </div>
 
@@ -62,19 +62,21 @@ Are you ready to embark on this journey? Follow these steps to ensure you're get
 Our folder structure is intentionally clean and modular:
 
 ```text
-📦 CompleteBackend
- ┣ 📂 CB/                 # The Complete Backend Engineering Curriculum
- ┃ ┣ 📂 docs/             # Phase-by-phase system design and backend theory
- ┃ ┣ 📂 interview/        # Backend specific interview questions and machine coding
- ┃ ┗ 📜 README.md         # Entry point for the Backend track
- ┣ 📂 DSA/                # The Data Structures and Algorithms Curriculum
- ┃ ┣ 📂 docs/             # 30-Day step-by-step algorithm mastery guides
- ┃ ┣ 📂 cheatsheets/      # Quick revision guides for FAANG interviews
- ┃ ┗ 📜 README.md         # Entry point for the DSA track
- ┣ 📂 Javascript-Master-Plan/ # The zero-to-production JavaScript guide
- ┃ ┗ 📜 README.md         # Entry point for the JavaScript track
- ┣ 📜 README.md           # ✨ You are here
- ┗ 📜 .gitignore
+ 📦 CompleteBackend
+  ┣ 📂 CB/                 # The Complete Backend Engineering Curriculum
+  ┃ ┣ 📂 docs/             # Phase-by-phase system design and backend theory
+  ┃ ┣ 📂 interview/        # Backend specific interview questions and machine coding
+  ┃ ┗ 📜 README.md         # Entry point for the Backend track
+  ┣ 📂 DSA/                # The Data Structures and Algorithms Curriculum
+  ┃ ┣ 📂 docs/             # 30-Day step-by-step algorithm mastery guides
+  ┃ ┣ 📂 cheatsheets/      # Quick revision guides for FAANG interviews
+  ┃ ┗ 📜 README.md         # Entry point for the DSA track
+  ┣ 📂 Java-DSA-Master-Plan/ # The Java implementation and DSA fluency guide
+  ┃ ┗ 📜 README.md         # Entry point for the Java track
+  ┣ 📂 Javascript-Master-Plan/ # The zero-to-production JavaScript guide
+  ┃ ┗ 📜 README.md         # Entry point for the JavaScript track
+  ┣ 📜 README.md           # ✨ You are here
+  ┗ 📜 .gitignore
 ```
 
 ---
