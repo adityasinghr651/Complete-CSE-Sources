@@ -1,58 +1,22 @@
 # PHASE 3 — Custom Data Structures + Trees & Graphs
-### (Parts 9 + 10 fused: Node classes → Binary Tree → Graph representations → BFS/DFS/Dijkstra/Topo Sort)
+### (Parts 9 + 10 fused: Node classes → Binary Tree → Graph representations → BFS/DFS)
+
+Trees and Graphs are often the scariest topics for beginners because you have to deal with custom `Node` classes instead of built-in arrays. But the code for traversing them is highly standardized. Once you memorize the boilerplate, these problems become much easier.
 
 ---
 
-## 1. Why custom classes first
+## 1. Custom Node Classes
 
-Most tree/graph/linked-list problems hand you a `Node` class or expect you to define one. The goal: never freeze when a problem needs a custom structure.
+**The Concept:** Trees, Graphs, and Linked Lists don't exist as built-in data structures in Java. You (or LeetCode) must define a `Node` class that holds a value and points to other nodes.
 
-**Generic pattern for any node-based structure:**
-```java
-class Node {
-    int val;
-    Node next;      // linked list
-    Node(int val) { this.val = val; }
-}
-```
-
----
-
-## 2. Linked List Node
-
+**Basic Syntax (Linked List & Binary Tree):**
 ```java
 class ListNode {
     int val;
     ListNode next;
     ListNode(int val) { this.val = val; }
 }
-```
-**Traversal:**
-```java
-ListNode cur = head;
-while (cur != null) {
-    // process cur.val
-    cur = cur.next;
-}
-```
-**Reversal (the pattern you must know cold):**
-```java
-ListNode prev = null, cur = head;
-while (cur != null) {
-    ListNode next = cur.next;  // save before overwriting
-    cur.next = prev;
-    prev = cur;
-    cur = next;
-}
-return prev; // new head
-```
-**Complexity**: O(n) time, O(1) space.
 
----
-
-## 3. Binary Tree Node
-
-```java
 class TreeNode {
     int val;
     TreeNode left, right;
@@ -60,219 +24,135 @@ class TreeNode {
 }
 ```
 
-### Recursive traversals (the shape you'll reuse for every tree problem)
+---
+
+## 2. Binary Tree Traversals
+
+**The Concept:** Because a tree branches out, you can't just use a simple `for` loop. You use **Recursion (DFS)** to go deep, or a **Queue (BFS)** to go level-by-level.
+
+### DFS (Depth First Search) - Recursive Pattern
+**Basic Syntax:**
 ```java
-void preorder(TreeNode node) {
-    if (node == null) return;
-    // process node.val (root first)
-    preorder(node.left);
-    preorder(node.right);
-}
-
-void inorder(TreeNode node) {
-    if (node == null) return;
-    inorder(node.left);
-    // process node.val (sorted order for a BST)
-    inorder(node.right);
-}
-
-void postorder(TreeNode node) {
-    if (node == null) return;
-    postorder(node.left);
-    postorder(node.right);
-    // process node.val (children first — used for deletion, height calc)
-}
-```
-**Base case is always `node == null → return`.** This is the #1 thing people forget under pressure.
-
-### Iterative DFS (using ArrayDeque as a stack)
-```java
-Deque<TreeNode> stack = new ArrayDeque<>();
-stack.push(root);
-while (!stack.isEmpty()) {
-    TreeNode node = stack.pop();
-    // process node.val
-    if (node.right != null) stack.push(node.right); // push right first
-    if (node.left != null) stack.push(node.left);   // so left pops first
+public void dfs(TreeNode node) {
+    if (node == null) return; // BASE CASE: Always the first line!
+    
+    // PRE-ORDER: Process node here (e.g., System.out.print(node.val))
+    dfs(node.left);
+    // IN-ORDER: Process node here (Gives sorted order in a BST!)
+    dfs(node.right);
+    // POST-ORDER: Process node here
 }
 ```
 
-### BFS / Level order (using ArrayDeque as a queue)
+### BFS (Breadth First Search) - Level Order Pattern
+**The Concept:** Use an `ArrayDeque` as a queue. Process nodes one level at a time. The trick is taking a "snapshot" of the queue's size before processing the level.
+
+**DSA Application (Printing level by level):**
 ```java
-Deque<TreeNode> queue = new ArrayDeque<>();
-queue.offer(root);
-while (!queue.isEmpty()) {
-    int levelSize = queue.size();       // snapshot — this is the key trick for level-by-level
-    for (int i = 0; i < levelSize; i++) {
-        TreeNode node = queue.poll();
-        // process node.val
-        if (node.left != null) queue.offer(node.left);
-        if (node.right != null) queue.offer(node.right);
+public void bfs(TreeNode root) {
+    if (root == null) return;
+    
+    Deque<TreeNode> queue = new ArrayDeque<>();
+    queue.offer(root);
+    
+    while (!queue.isEmpty()) {
+        int levelSize = queue.size(); // SNAPSHOT: How many nodes are on this level?
+        
+        for (int i = 0; i < levelSize; i++) {
+            TreeNode node = queue.poll(); // Remove from front
+            System.out.print(node.val + " ");
+            
+            if (node.left != null) queue.offer(node.left); // Add children to back
+            if (node.right != null) queue.offer(node.right);
+        }
+        System.out.println(); // Move to next line for the next level
     }
-    // one full level processed here
 }
 ```
-**The `levelSize` snapshot is the single most important trick in level-order traversal** — without it you can't tell where one level ends and the next begins.
 
-### BST-specific
-```java
-TreeNode search(TreeNode node, int target) {
-    if (node == null || node.val == target) return node;
-    return target < node.val ? search(node.left, target) : search(node.right, target);
-}
-```
-**Decision rule**: "sorted order traversal of a BST" → inorder gives you sorted output for free.
+> [!IMPORTANT]
+> **The `levelSize` Snapshot**: Without `int levelSize = queue.size();`, you won't know where one level ends and the next begins, because you are constantly adding new children to the queue!
 
 ---
 
-## 4. Graph representations
+## 3. Graph Representations (Adjacency List)
 
-**Adjacency list — the default choice for almost everything:**
+**The Concept:** A Graph is just a network of nodes connected by edges. In coding interviews, you are usually given a 2D array of edges, e.g., `[[0,1], [0,2], [1,2]]`. You must convert this into an **Adjacency List** before you can traverse it.
+
+**Basic Syntax (Building the Adjacency List):**
+An Adjacency List is usually a List of Lists (or an Array of Lists).
+
 ```java
-// Unweighted, node labels 0..n-1
+int n = 3; // Number of nodes (0 to 2)
+int[][] edges = {{0,1}, {0,2}, {1,2}};
+
+// 1. Initialize the Adjacency List
 List<List<Integer>> adj = new ArrayList<>();
-for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
-adj.get(u).add(v);
-adj.get(v).add(u); // omit this line if directed
-```
+for (int i = 0; i < n; i++) {
+    adj.add(new ArrayList<>()); // Empty list for each node
+}
 
-**HashMap-based graph** — use when node labels aren't clean 0..n-1 integers (e.g. Strings):
-```java
-Map<String, List<String>> adj = new HashMap<>();
-adj.computeIfAbsent(u, k -> new ArrayList<>()).add(v);
+// 2. Populate it
+for (int[] edge : edges) {
+    int u = edge[0];
+    int v = edge[1];
+    
+    adj.get(u).add(v); // u points to v
+    adj.get(v).add(u); // v points to u (Omit this line if directed!)
+}
 ```
-(`computeIfAbsent` is the HashMap idiom for "create the list if it's not there yet, then use it" — very common in graph-building code.)
-
-**Adjacency matrix** — only when the graph is dense or n is small (≤ ~1000):
-```java
-int[][] adjMatrix = new int[n][n]; // adjMatrix[u][v] = weight, or 1/0 for unweighted
-```
-
-**Weighted edges** — pair each neighbor with a weight, usually as `int[]{neighbor, weight}`:
-```java
-List<List<int[]>> adj = new ArrayList<>();
-for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
-adj.get(u).add(new int[]{v, weight});
-```
-
-**Decision rule**: "I need each node's neighbors" → adjacency list (ArrayList-of-ArrayLists for int labels, HashMap-of-Lists for non-integer labels). Reach for a matrix only when explicitly dense/small.
 
 ---
 
-## 5. Graph traversal — BFS and DFS
+## 4. Graph BFS & DFS
 
-**Visited tracking**: use a `boolean[] visited` (if labels are 0..n-1) or `HashSet<T>` (if labels aren't clean integers). Always mark visited **at the moment you enqueue/push**, not when you dequeue — otherwise you can enqueue the same node multiple times before processing it.
+**The Concept:** Graph traversal is exactly like Tree traversal, with one major difference: **Graphs can have cycles!** If you don't track which nodes you've visited, you will get stuck in an infinite loop.
 
-**BFS (shortest path in unweighted graph):**
+### Graph BFS (Shortest Path in Unweighted Graph)
+**DSA Application:**
 ```java
-boolean[] visited = new boolean[n];
-Deque<Integer> queue = new ArrayDeque<>();
-queue.offer(start);
-visited[start] = true;
-while (!queue.isEmpty()) {
-    int node = queue.poll();
-    // process node
+public void graphBFS(int startNode, List<List<Integer>> adj, int n) {
+    boolean[] visited = new boolean[n]; // Track visited nodes!
+    Deque<Integer> queue = new ArrayDeque<>();
+    
+    queue.offer(startNode);
+    visited[startNode] = true; // Mark visited IMMEDIATELY when enqueuing
+    
+    while (!queue.isEmpty()) {
+        int node = queue.poll();
+        System.out.println("Visited: " + node);
+        
+        for (int neighbor : adj.get(node)) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true; 
+                queue.offer(neighbor);
+            }
+        }
+    }
+}
+```
+
+> [!WARNING]
+> **Common Pitfall**: Always mark a node as `visited` the exact moment you put it into the queue. If you wait until you take it *out* of the queue, multiple other nodes might add it to the queue again, causing duplicates and massive memory spikes!
+
+### Graph DFS (Connectivity / Path Finding)
+**DSA Application:**
+```java
+public void dfs(int node, List<List<Integer>> adj, boolean[] visited) {
+    visited[node] = true;
+    System.out.println("Visited: " + node);
+    
     for (int neighbor : adj.get(node)) {
         if (!visited[neighbor]) {
-            visited[neighbor] = true;   // mark on enqueue
-            queue.offer(neighbor);
+            dfs(neighbor, adj, visited);
         }
     }
 }
 ```
 
-**DFS recursive:**
-```java
-void dfs(int node, List<List<Integer>> adj, boolean[] visited) {
-    visited[node] = true;
-    // process node
-    for (int neighbor : adj.get(node)) {
-        if (!visited[neighbor]) dfs(neighbor, adj, visited);
-    }
-}
-```
-
-**DFS iterative** (same shape as tree DFS, but needs the visited check because graphs can have cycles):
-```java
-Deque<Integer> stack = new ArrayDeque<>();
-boolean[] visited = new boolean[n];
-stack.push(start);
-while (!stack.isEmpty()) {
-    int node = stack.pop();
-    if (visited[node]) continue;
-    visited[node] = true;
-    // process node
-    for (int neighbor : adj.get(node)) {
-        if (!visited[neighbor]) stack.push(neighbor);
-    }
-}
-```
-
-**Decision rule**: shortest path / level-by-level → BFS. Exploring all paths, connectivity, cycle detection, backtracking-adjacent problems → DFS.
+**Decision Rule:** Need the shortest path? → BFS. Need to explore all paths, detect cycles, or check if two nodes are connected? → DFS.
 
 ---
 
-## 6. Dijkstra (shortest path, weighted, non-negative)
-
-Uses PriorityQueue (Phase 2) + adjacency list of `int[]{neighbor, weight}`:
-```java
-int[] dist = new int[n];
-Arrays.fill(dist, Integer.MAX_VALUE);
-dist[start] = 0;
-
-PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]); // {node, distSoFar}
-pq.offer(new int[]{start, 0});
-
-while (!pq.isEmpty()) {
-    int[] cur = pq.poll();
-    int node = cur[0], d = cur[1];
-    if (d > dist[node]) continue; // stale entry, skip — this check matters
-
-    for (int[] edge : adj.get(node)) {
-        int next = edge[0], weight = edge[1];
-        if (dist[node] + weight < dist[next]) {
-            dist[next] = dist[node] + weight;
-            pq.offer(new int[]{next, dist[next]});
-        }
-    }
-}
-```
-**Why the `if (d > dist[node]) continue` check**: since we don't remove stale entries from the PQ, a node can get enqueued multiple times with different distances. Skipping outdated ones keeps it correct.
-
----
-
-## 7. Topological Sort (Kahn's algorithm, BFS-based)
-
-```java
-int[] indegree = new int[n];
-for (List<Integer> neighbors : adj) for (int v : neighbors) indegree[v]++;
-
-Deque<Integer> queue = new ArrayDeque<>();
-for (int i = 0; i < n; i++) if (indegree[i] == 0) queue.offer(i);
-
-List<Integer> order = new ArrayList<>();
-while (!queue.isEmpty()) {
-    int node = queue.poll();
-    order.add(node);
-    for (int next : adj.get(node)) {
-        if (--indegree[next] == 0) queue.offer(next);
-    }
-}
-// if order.size() < n → cycle exists, no valid topological order
-```
-**Decision rule**: "order tasks respecting dependencies" / "detect a cycle in a directed graph" → topological sort. `order.size() < n` is your cycle-detection check for free.
-
----
-
-## 8. Updated "I need to..." → tool table
-
-| I need to... | Use |
-|---|---|
-| Represent a graph's neighbors | Adjacency list (ArrayList or HashMap of Lists) |
-| Shortest path, unweighted | BFS |
-| Shortest path, weighted, non-negative | Dijkstra (PriorityQueue) |
-| Explore all paths / detect cycles / connectivity | DFS |
-| Order tasks by dependency | Topological sort (Kahn's, BFS) |
-| Process a tree level by level | BFS with the `levelSize` snapshot trick |
-| Get sorted output from a BST | Inorder traversal |
-| Reverse a linked list | Three-pointer (`prev`, `cur`, `next`) sweep |
+## 🚀 Next Steps
+Can you open a blank editor and write the **Tree BFS (Level Order)** loop and the **Graph Adjacency List Builder** purely from memory? Try it!

@@ -1,260 +1,202 @@
 # PHASE 2 — Collections Toolkit + DSA Implementation Patterns
-### (Parts 2 + 3 + 4 fused: HashMap, HashSet, ArrayList, ArrayDeque, PriorityQueue, TreeMap/TreeSet — each tied to what it's for)
+### (Parts 2 + 3 + 4 fused: HashMap, HashSet, ArrayList, ArrayDeque, PriorityQueue)
 
-This is the part that actually fixes your stated bottleneck: "I know I need to track something, but I don't know which Java tool gets me there." Every structure below comes with the decision rule for *when* you reach for it.
+This is the part that actually fixes the bottleneck: *"I know I need to track something, but I don't know which Java tool gets me there."*
+
+Every structure below comes with the **Decision Rule** for *when* you reach for it in an interview.
 
 ---
 
-## 1. The mental map
+## 1. ArrayList (Dynamic Array)
 
-```text
-Collection
-│
-├── List
-│   ├── ArrayList   — dynamic array, index access
-│   └── LinkedList  — rarely needed for DSA interviews, skip unless asked
-│
-├── Set
-│   ├── HashSet     — existence check, no order
-│   └── TreeSet     — existence check, sorted order
-│
-├── Queue
-│   ├── ArrayDeque      — stack AND queue (use this, not java.util.Stack)
-│   └── PriorityQueue   — always gives you min (or max) element
-│
-└── Map
-    ├── HashMap   — key→value, O(1) avg, no order
-    └── TreeMap   — key→value, sorted by key, O(log n)
+**The Concept:** A resizable array. Use this when you need index-based access but don't know the final size of the array ahead of time.
+
+**Basic Syntax:**
+```java
+List<Integer> list = new ArrayList<>();
+list.add(10);          // Append to end: O(1) amortized
+list.set(0, 99);       // Update index 0 to 99: O(1)
+int val = list.get(0); // Random access: O(1)
+int len = list.size(); // Length (not .length!)
 ```
 
----
-
-## 2. ArrayList — dynamic array
-
-| Method | Returns | Modifies? | Use |
-|---|---|---|---|
-| `add(x)` | boolean | yes | append |
-| `add(i, x)` | void | yes | insert at index — O(n) shift |
-| `get(i)` | T | no | O(1) random access |
-| `set(i, x)` | T (old val) | yes | overwrite at index |
-| `remove(i)` | T (removed val) | yes | **index-based** remove — O(n) shift |
-| `remove(Object o)` | boolean | yes | **value-based** remove — trap below |
-| `size()` | int | no | loop bound |
-| `contains(x)` | boolean | no | O(n) linear scan |
-| `isEmpty()` | boolean | no | — |
-
-**Classic trap**: `list.remove(2)` on a `List<Integer>` removes the element **at index 2**, not the value `2`. To remove the value, box it: `list.remove(Integer.valueOf(2))`.
-
-**Decision rule**: need index-based random access and mostly append at the end? → ArrayList. Need frequent insert/delete in the middle? Usually still fine with ArrayList for interview-sized inputs — LinkedList's theoretical advantage rarely matters here and its overhead often makes it slower in practice.
-
----
-
-## 3. HashMap — key → value, O(1) average
-
-| Method | Returns | Modifies? | Use |
-|---|---|---|---|
-| `put(k, v)` | old value or null | yes | insert/update |
-| `get(k)` | value or null | no | lookup — **NPE risk if you auto-unbox a null** |
-| `getOrDefault(k, def)` | value or def | no | lookup with fallback — avoids null checks |
-| `containsKey(k)` | boolean | no | existence check |
-| `containsValue(v)` | boolean | no | O(n) — rarely what you want |
-| `remove(k)` | old value or null | yes | delete |
-| `putIfAbsent(k, v)` | old value or null | yes | insert only if key missing |
-| `keySet()` | Set\<K\> (view) | no | iterate keys |
-| `values()` | Collection\<V\> (view) | no | iterate values |
-| `entrySet()` | Set\<Map.Entry\<K,V\>\> | no | iterate key+value together — preferred over `keySet()` + `get()` in a loop |
-| `merge(k, v, fn)` | new value | yes | combine on collision — see below |
-
-**Frequency counting — the pattern you'll use constantly:**
+**DSA Application (Returning a List of answers):**
+Often, LeetCode asks you to return a `List<Integer>`. You build it using an ArrayList.
 ```java
+public List<Integer> findEvens(int[] nums) {
+    List<Integer> evens = new ArrayList<>();
+    for (int num : nums) {
+        if (num % 2 == 0) {
+            evens.add(num);
+        }
+    }
+    return evens;
+}
+```
+
+> [!WARNING]
+> **Common Pitfall**: `list.remove(2)` on a `List<Integer>` removes the element **at index 2**, not the value `2`. To remove the value, you must box it: `list.remove(Integer.valueOf(2))`.
+
+**Decision Rule:** Need index-based random access and mostly append at the end? → `ArrayList`.
+
+---
+
+## 2. HashMap (Key → Value Map)
+
+**The Concept:** Stores key-value pairs. Offers O(1) average time complexity for lookups, insertions, and deletions.
+
+**Basic Syntax:**
+```java
+Map<String, Integer> map = new HashMap<>();
+map.put("Alice", 25);
+map.put("Bob", 30);
+
+int age = map.get("Alice");           // 25
+boolean hasBob = map.containsKey("Bob"); // true
+map.remove("Alice");
+```
+
+**DSA Application 1: Frequency Counting Pattern**
+You will use this pattern constantly. The `getOrDefault` method prevents NullPointerExceptions if the key doesn't exist yet.
+```java
+int[] nums = {1, 1, 2, 3, 1, 2};
 Map<Integer, Integer> freq = new HashMap<>();
-for (int x : nums) freq.put(x, freq.getOrDefault(x, 0) + 1);
-```
-Same thing with `merge`:
-```java
-freq.merge(x, 1, Integer::sum);
-```
 
-**Iterating key+value together (preferred style):**
-```java
-for (Map.Entry<Integer, Integer> e : freq.entrySet()) {
-    int key = e.getKey();
-    int val = e.getValue();
+for (int num : nums) {
+    // If num exists, get its count. Otherwise, default to 0. Then add 1.
+    freq.put(num, freq.getOrDefault(num, 0) + 1);
 }
 ```
 
-**Common mistake**: calling `.get(k)` on a missing key returns `null`, and if you assign that to a primitive `int`, you get a `NullPointerException` on auto-unboxing. Use `getOrDefault` instead.
-
-**Decision rule**: "I need to count occurrences / group things by a key / check O(1) avg lookup by key" → HashMap.
-
----
-
-## 4. HashSet — existence check, no duplicates, no order
-
-| Method | Returns | Modifies? | Use |
-|---|---|---|---|
-| `add(x)` | boolean (false if already present) | yes | insert — the return value itself is useful for "have I seen this before" |
-| `contains(x)` | boolean | no | O(1) avg existence check |
-| `remove(x)` | boolean | yes | delete |
-| `size()` | int | no | — |
-
-**Visited-tracking pattern (graphs, BFS/DFS):**
+**DSA Application 2: The "Two Sum" Tracking Pattern**
 ```java
-Set<Integer> visited = new HashSet<>();
-if (!visited.contains(node)) {
-    visited.add(node);
-    // process
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> seen = new HashMap<>(); // val -> index
+    
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (seen.containsKey(complement)) {
+            return new int[] { seen.get(complement), i };
+        }
+        seen.put(nums[i], i);
+    }
+    return new int[] {};
 }
 ```
 
-**Duplicate-detection pattern using add()'s return value:**
+**Decision Rule:** "I need to count occurrences" OR "I need O(1) lookup by a specific key" → `HashMap`.
+
+---
+
+## 3. HashSet (Unique Elements)
+
+**The Concept:** A collection that contains no duplicates. Offers O(1) average time complexity for lookups and insertions.
+
+**Basic Syntax:**
 ```java
-Set<Integer> seen = new HashSet<>();
-for (int x : nums) {
-    if (!seen.add(x)) return true;  // add() returns false if x was already there
+Set<Integer> set = new HashSet<>();
+set.add(5);
+boolean exists = set.contains(5); // true
+set.remove(5);
+```
+
+**DSA Application: Duplicate Detection Pattern**
+The `.add()` method returns `false` if the element was *already* in the set! This is a powerful trick.
+```java
+public boolean containsDuplicate(int[] nums) {
+    Set<Integer> seen = new HashSet<>();
+    for (int num : nums) {
+        if (!seen.add(num)) {
+            return true; // add() failed, it was a duplicate!
+        }
+    }
+    return false;
 }
-return false;
 ```
 
-**Decision rule**: "I need existence/duplicate check, order doesn't matter" → HashSet.
+**Decision Rule:** "I need to check for existence/duplicates, and order doesn't matter" → `HashSet`.
 
 ---
 
-## 5. TreeMap / TreeSet — sorted versions
+## 4. ArrayDeque (Stack & Queue)
 
-Same method sets as HashMap/HashSet (`put/get/add/contains/remove`), but backed by a red-black tree → O(log n) per operation instead of O(1) average, and iteration happens in **sorted key/element order**.
+**The Concept:** A double-ended queue. **Do not use the legacy `Stack` class in Java.** Use `ArrayDeque` for both Stack (LIFO) and Queue (FIFO) behavior.
 
-Extra useful methods on both:
-| Method | Returns | Use |
-|---|---|---|
-| `firstKey()` / `lastKey()` (TreeMap) | K | smallest/largest key |
-| `first()` / `last()` (TreeSet) | E | smallest/largest element |
-| `floorKey(k)` / `ceilingKey(k)` | K or null | largest key ≤ k / smallest key ≥ k |
-| `lowerKey(k)` / `higherKey(k)` | K or null | strictly less/greater |
-| `floor(x)` / `ceiling(x)` (TreeSet) | E or null | same idea, no key/value |
-
-**Decision rule**: "I need sorted keys/elements, or the closest value to X, or repeatedly need min/max but also want ordered iteration" → TreeMap/TreeSet. If you don't need sorted order, HashMap/HashSet is faster — don't reach for Tree* by default.
-
----
-
-## 6. ArrayDeque — stack AND queue in one class
-
-**Use `ArrayDeque` for both stack and queue behavior. Do not use the legacy `java.util.Stack` class** — it's synchronized (slower) and considered a design mistake in the JDK itself.
-
-| Method | Behaves as | Returns | Use |
-|---|---|---|---|
-| `push(x)` | stack push | void | add to front |
-| `pop()` | stack pop | E, throws if empty | remove from front |
-| `peek()` | stack/queue peek | E or null | look without removing |
-| `offer(x)` / `offerLast(x)` | queue enqueue | boolean | add to back |
-| `poll()` / `pollFirst()` | queue dequeue | E or null | remove from front |
-| `addFirst(x)` / `addLast(x)` | deque insert | void | explicit both-ends insert |
-| `pollFirst()` / `pollLast()` | deque remove | E or null | explicit both-ends remove, **null-safe** (no exception on empty) |
-| `isEmpty()` | — | boolean | loop condition |
-
-**As a stack (LIFO)** — valid parentheses, monotonic stack:
+### As a Stack (LIFO)
+**Basic Syntax:**
 ```java
-Deque<Character> stack = new ArrayDeque<>();
-stack.push(c);
-char top = stack.pop();
+Deque<Integer> stack = new ArrayDeque<>();
+stack.push(10); // push to top
+stack.push(20);
+int top = stack.pop(); // 20 (removes it)
+int peek = stack.peek(); // 10 (looks at it)
 ```
 
-**As a queue (FIFO)** — BFS:
+**DSA Application (Valid Parentheses):**
+```java
+public boolean isValid(String s) {
+    Deque<Character> stack = new ArrayDeque<>();
+    for (char c : s.toCharArray()) {
+        if (c == '(') stack.push(')');
+        else if (c == '{') stack.push('}');
+        else if (c == '[') stack.push(']');
+        else if (stack.isEmpty() || stack.pop() != c) return false;
+    }
+    return stack.isEmpty();
+}
+```
+
+### As a Queue (FIFO)
+**Basic Syntax:**
 ```java
 Deque<Integer> queue = new ArrayDeque<>();
-queue.offer(start);
-while (!queue.isEmpty()) {
-    int node = queue.poll();
-    // process, then queue.offer(neighbor)
-}
+queue.offer(10); // add to back (enqueue)
+queue.offer(20);
+int front = queue.poll(); // 10 (remove from front / dequeue)
 ```
 
-**Monotonic stack pattern** (next greater element, etc.) — keep the stack's values in increasing/decreasing order, popping while the new element breaks the invariant:
-```java
-Deque<Integer> stack = new ArrayDeque<>(); // stores indices
-for (int i = 0; i < nums.length; i++) {
-    while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
-        int idx = stack.pop();
-        result[idx] = nums[i]; // nums[i] is the "next greater" for nums[idx]
-    }
-    stack.push(i);
-}
-```
-
-**Decision rule**: "I need LIFO" or "I need FIFO" → ArrayDeque either way, just use the matching method names.
+**Decision Rule:** "I need LIFO (Last In First Out)" OR "I need FIFO (First In First Out)" → `ArrayDeque`.
 
 ---
 
-## 7. PriorityQueue — always gives you the min (or max)
+## 5. PriorityQueue (Min/Max Heap)
 
-Backed by a binary heap. Default is a **min-heap** (smallest element at the head).
+**The Concept:** Always gives you the minimum (or maximum) element in O(1) time. Insertions take O(log N).
 
-| Method | Returns | Modifies? | Use |
-|---|---|---|---|
-| `offer(x)` / `add(x)` | boolean | yes | insert — O(log n) |
-| `poll()` | smallest (or null if empty) | yes | remove+return the min — O(log n) |
-| `peek()` | smallest (or null) | no | look without removing — O(1) |
-| `remove(x)` | boolean | yes | remove a specific value — O(n), rarely needed |
-| `size()` | int | no | — |
-
-**Min-heap (default):**
+**Basic Syntax:**
 ```java
+// Default is a Min-Heap (smallest element at the top)
 PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-```
 
-**Max-heap (reverse comparator):**
-```java
+// Max-Heap (largest element at the top)
 PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+minHeap.offer(10);
+minHeap.offer(5);
+int smallest = minHeap.poll(); // 5
 ```
 
-**Custom objects (e.g., pairs, or `int[]` for graph edges) need a Comparator:**
+**DSA Application: Top K Elements Pattern**
+How to find the Kth largest element in an array? Keep a Min-Heap of size K.
 ```java
-// Dijkstra-style: int[]{node, distance}, ordered by distance
-PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
-```
-
-**Top-K pattern** (kth largest — keep a min-heap of size K):
-```java
-PriorityQueue<Integer> heap = new PriorityQueue<>();
-for (int x : nums) {
-    heap.offer(x);
-    if (heap.size() > k) heap.poll(); // evict the smallest, keeping the k largest
+public int findKthLargest(int[] nums, int k) {
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    
+    for (int num : nums) {
+        minHeap.offer(num);
+        if (minHeap.size() > k) {
+            minHeap.poll(); // Evict the smallest element seen so far
+        }
+    }
+    
+    // The top of the heap is the Kth largest overall!
+    return minHeap.peek(); 
 }
-return heap.peek(); // kth largest
 ```
 
-**Common mistake**: forgetting the default is a min-heap when the problem wants the max — you'll get wrong answers silently (no crash, just wrong output) if you don't pass a comparator.
-
-**Decision rule**: "I need the min or max element repeatedly, while more elements keep coming in" → PriorityQueue.
+**Decision Rule:** "I need the min or max element repeatedly while more elements keep coming in" → `PriorityQueue`.
 
 ---
 
-## 8. Comparator — for TreeMap/TreeSet ordering and PriorityQueue/sort ordering
-
-```java
-// Lambda form (preferred in interviews):
-Comparator<int[]> byDistance = (a, b) -> a[1] - b[1];
-
-// Sort a List of custom pairs by second value descending:
-list.sort((a, b) -> b[1] - a[1]);
-
-// Multi-key sort: by first value asc, then second value desc:
-list.sort((a, b) -> a[0] != b[0] ? a[0] - b[0] : b[1] - a[1]);
-```
-**Mistake**: `a - b` on `int[]` elements overflows if values are near `Integer.MIN_VALUE`/`MAX_VALUE` — use `Integer.compare(a, b)` to be safe in general, though `a-b` is fine for typical interview-sized inputs.
-
----
-
-## 9. Updated "I need to..." → tool table
-
-| I need to... | Use |
-|---|---|
-| Count occurrences | HashMap |
-| Check existence / duplicates, no order | HashSet |
-| Sorted keys, or closest-value queries | TreeMap / TreeSet |
-| Min or max repeatedly, elements keep arriving | PriorityQueue |
-| LIFO | ArrayDeque (`push`/`pop`) |
-| FIFO (BFS) | ArrayDeque (`offer`/`poll`) |
-| Custom sort order | Comparator lambda |
-| Index-based random access, append at end | ArrayList |
-| Iterate a map's keys and values together | `entrySet()` |
+## 🚀 Next Steps
+Can you open a blank editor and write the **Two Sum** (HashMap), **Contains Duplicate** (HashSet), and **Valid Parentheses** (ArrayDeque Stack) solutions from memory? Try it!
